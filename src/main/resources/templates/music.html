@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>VIP资源解析</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="VIP资源解析">
+<link rel="stylesheet" href="css/layer.css" id="layui_layer_skinlayercss"></head><body>
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/layer.css"/>
+<link rel="stylesheet" href="css/default.css"/>
+<link rel="stylesheet" href="css/fileinput.min.css"/>
+
+<!-- 导航栏 -->
+    	<nav class="navbar navbar-default top-navigation">
+		<div class="container">
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+			    <span class="sr-only">Toggle navigation</span>
+			    <span class="icon-bar"></span>
+			    <span class="icon-bar"></span>
+			    <span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" href="#">VIP资源解析</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="navbar-collapse">
+			  <ul class="nav navbar-nav">
+			    <li class="active"><a href="http://www.torrent.org.cn/">音乐真实地址解析<span class="sr-only">(current)</span></a></li>
+			    <li><a href="">视频真实地址解析</a></li>
+			    <li><a href="">百度文库真实地址解析</a></li>
+			  </ul>
+			  <ul class="nav navbar-nav navbar-right">
+			    <li><a href="#">留言</a></li>
+			    <li class="dropdown">
+			      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我的<span class="caret"></span></a>
+			      <ul class="dropdown-menu">
+			        <li><a href="#">会员</a></li>
+			        <li><a href="#">积分</a></li>
+			        <li><a href="#">邮箱</a></li>
+			        <li role="separator" class="divider"></li>
+			        <li><a href="#">退出</a></li>
+			      </ul>
+			    </li>
+			  </ul>
+			</div>
+		</div>
+	</nav>
+
+<!-- content -->
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-9">
+                <!-- 酷狗音乐 -->
+                <div>
+     				<h1>酷狗音乐真实地址解析</h1>
+                    <div class="bs-callout bs-callout-info" id="callout-badges-ie8-empty">
+                        <h4></h4>
+                        <p>输入你要下载的音乐</p>
+                        <form method="GET" action="">
+                            <div class="input-group">
+                                <input type="text" name="hash" class="form-control" placeholder="音乐名">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" lay-filter="formDemo" type="submit">　<i class="glyphicon glyphicon-refresh"></i> 转换　</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div style="margin-top:30px;">
+                    
+                </div>
+
+                <!-- QQ音乐 -->
+                <div>
+                    <h1>QQ音乐真实地址解析</h1>
+                    <div class="bs-callout bs-callout-info" id="callout-badges-ie8-empty">
+                        <h4></h4>
+                        <p>QQ音乐真实地址解析</p>
+                        <form method="GET" action="">
+                            <div class="input-group">
+                                <input type="text" name="hash" class="form-control" placeholder="音乐名">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">　<i class="glyphicon glyphicon-refresh"></i> 转换　</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div style="margin-top:50px;"></div>
+                <div class="panel panel-default">
+     <div class="panel-heading">歌曲列表</div>
+          <ul class="list-group" id="result-music">
+              <li class="list-group-item"><a href="http://www.torrent.org.cn/home/announce/detail/id/5.html"></a></li>
+          </ul>
+	</div>
+
+                <!-- 法律 -->
+                <div>
+                    <h1>法律</h1>
+                    <div id="callout-glyphicons-location" class="bs-callout bs-callout-danger">
+                        <h4></h4>
+                        <p>不经营自己的源服务器</p>
+                        <p>不记录任何上传的信息</p>
+                    </div>
+                </div>
+
+                <!-- 接口 -->
+                <div>
+                    <div class="bs-docs-section">
+                        <h1>接口</h1>
+
+                        <p>请注意接口使用 <code>频率限制</code>为防止恶意攻击,本站已开启访问频率</p>
+                        <span class="nt"><a href="#" target="_blank">接口申请</a></span>
+                        <span class="nt"><a href="#" target="_blank">接口文档</a></span>
+                        <p>调用接口需要先 <code>申请</code>，审核通过以后才能使用</p>
+                    </div>
+                </div>
+
+<!-- jquery -->
+<script src="js/jquery.min.js"></script>
+<!-- jquery cookie -->
+<script src="js/jquery.cookie.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+
+<!-- layer -->
+<script src="js/layer.js"></script>
+
+
+<!-- 关于我们 -->      
+<div>
+    <h1>关于我们</h1>
+	<p>群号码：752146272</p>
+	<p>本群为付费加入，群费5元。群经费用于网站开发运维，服务器费用等。群内禁止发布和传播违法色情等信息</p>
+	<a target="_blank" href="https://shang.qq.com/wpa/qunwpa?idkey=875408aae56499d92ddcdda3966fa7c01e1d3b587b038d335917df7d41893170">
+	<img border="0" src="images/group.png" alt="VIP资源解析群" title="VIP资源解析群"></a>
+</div>
+
+<!-- 友情链接 -->
+<div class="link">
+    <h1>友情链接</h1>
+    友情链接开放申请
+    <a href="http://www.jsons.cn/">JSON工具</a>
+    <a href="http://www.miitbeian.gov.cn/">苏ICP备11013505号-4</a>
+</div>
+ </div>
+
+			<!-- 右侧捐助码 -->
+            <div class="col-md-3">
+                <div class="panel panel-success">
+                    <div class="panel-heading">微信捐助二维码</div>
+                    <div class="panel-body">
+                        <p style="margin:0 auto; width:205px;"><img src="images/tenpay.jpg" alt="财付通捐赠"></p>
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">支付宝捐助二维码</div>
+                    <div class="panel-body">
+                        <p style="margin:0 auto; width:205px;"><img src="images/alipay.jpg" alt="支付宝捐赠"></p>
+                    </div>
+                </div>
+<!--公告 -->
+<div class="panel panel-default">
+     <div class="panel-heading">公告列表</div>
+          <ul class="list-group">
+              <li class="list-group-item"><a href="http://www.torrent.org.cn/home/announce/detail/id/5.html">网站遭受大量恶意请求和攻击,暂停服务，正在紧急修复</a></li>
+              <li class="list-group-item"><a href="http://www.torrent.org.cn/home/announce/detail/id/4.html">网站开启升窗广告,对大家说抱歉</a></li>
+              <li class="list-group-item"><a href="http://www.torrent.org.cn/home/announce/detail/id/3.html">网站搬迁阿里云</a></li>
+              <li class="list-group-item"><a href="http://www.torrent.org.cn/home/announce/detail/id/2.html">强烈谴责那些恶意攻击本站的人</a></li>
+              <li class="list-group-item"><a href="http://www.torrent.org.cn/home/announce/detail/id/1.html">关于网站近期登录失败的问题</a></li>
+          </ul>
+</div>
+
+ <div class="panel panel-default">
+      <div class="panel-heading">最新捐赠列表</div>
+ 	  <div class="panel-body">
+           <p>捐赠列表暂时不能时时显示,整理中,请见谅</p>
+      </div>
+
+      <!-- Table -->
+      <table class="table">
+           <thead>
+           		<tr>
+                <th>#</th>
+               <th>昵称</th>
+                <th>金额</th>
+                </tr>
+           </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">14</th>
+                                <td>夏娃的小猪-Julius</td>
+                                <td>￥10</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">13</th>
+                                <td>建书</td>
+                                <td>￥10</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">12</th>
+                                <td>费立典</td>
+                                <td>￥5</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">11</th>
+                                <td>Ark</td>
+                                <td>￥20</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">10</th>
+                                <td>旅途旧时光</td>
+                                <td>￥1</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">9</th>
+                                <td>駼哉2016</td>
+                                <td>￥11</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">8</th>
+                                <td>呃呃</td>
+                                <td>￥2</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">7</th>
+                                <td>呃呃</td>
+                                <td>￥2.61</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">6</th>
+                                <td>mrbluer</td>
+                                <td>￥6.6</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">5</th>
+                                <td>世锦</td>
+                                <td>￥2</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">4</th>
+                                <td>freethy</td>
+                                <td>￥10</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>creafsd</td>
+                                <td>￥6.6</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>仓粉</td>
+                                <td>￥2</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>尼玛*萨丁</td>
+                                <td>￥7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+<!-- 最底部 -->
+                <div class="alert alert-success">
+
+                    <p>维护这个站很累你知道不?</p>
+                    <p>没钱续费服务器你知道不?</p>
+                    <p>三更半夜写代码你知道不?</p>
+                    <p>站长没有女朋友你知道不?</p>
+                    <p>你知道不?</p>
+                    <p>知道不?</p>
+                    <p>道不?</p>
+                    <p>不?</p>
+                    <p>你不捐助一下么?</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+    
+    
+    
+    
+    layui.use('form', function(){
+  	  var form = layui.form;
+  	  
+  	  //监听提交
+  	  form.on('submit(formDemo)', function(data){
+  	    //layer.msg(JSON.stringify(data.field));
+  	    $.ajax({
+  	    	type: 'GET',
+  	    	url : 'music/seach'
+  	    	data: data,
+  			dataType: 'json'
+  			success:function(d){
+  				if(d.success){
+  					alter(d.data);
+  					console.info(d.data);
+  					musics = d.data;
+  					layui.msg(musics);
+  				}
+  			}
+  	    });
+  	    return true;
+  	  });
+  	});
+    
+    
+    </script>
+    
+    
+</body>
+</html>

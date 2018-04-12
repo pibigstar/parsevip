@@ -1,0 +1,49 @@
+﻿@charset "utf-8";
+
+body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6
+{
+	font-family: Microsoft YaHei;
+  	font-size: 14px;
+  	color: #333333;
+  	background: #FFFFFF;
+}
+
+
+a {font-size:14px}
+a:link {color: #3385ff; text-decoration:none;}
+a:active{color: #666; }
+a:visited {color:#3385ff;text-decoration:none;}
+a:hover {color: #005be3; text-decoration:underline;}/*3385ff:005be3*/
+
+ul { margin:0px; padding:0px; }
+ul li {list-style: none;}
+
+.m {
+  margin: auto;
+  width: 960px;
+  background: #FFFFFF;
+}
+.b10 {height: 10px;font-size: 1px;}
+.b20 {height: 20px;font-size: 1px;}
+.b30 {height: 30px;font-size: 1px;}
+.center{text-align: center;}
+        
+.con { margin:20px; padding:20px; border:solid 1px #ccc; background-color:#eee; }
+.link a { margin-left:20px; }
+
+h1 {
+display: block;
+font-size: 2em;
+font-weight: bold;
+margin-top:20px;
+-webkit-margin-before: 0.67em;
+-webkit-margin-after: 0.67em;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;
+
+}
+
+.ad { width:960px; text-align:center; margin:20px auto 20px auto; }
+.navbar {
+    margin-top:0px;
+}
