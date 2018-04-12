@@ -20,18 +20,18 @@ import com.pibigstar.parsevip.bean.Song;
  *
  */
 public class KuGou {
-	private static List<Song> songs = new ArrayList<>();
-	public static void main(String[] args) {
-		try {
-			Scanner scanner = new Scanner(System.in);
-			String name = new String(scanner.nextLine().getBytes("utf-8"),"gbk");
-			String urlName = URLEncoder.encode(name, "gbk");
-			scanner.close();
-			parse(urlName);
-		} catch (UnsupportedEncodingException e1) {
-			e1.printStackTrace();
-		} 
-	}
+	
+//	public static void main(String[] args) {
+//		try {
+//			Scanner scanner = new Scanner(System.in);
+//			String name = new String(scanner.nextLine().getBytes("utf-8"),"gbk");
+//			String urlName = URLEncoder.encode(name, "gbk");
+//			scanner.close();
+//			parse(urlName);
+//		} catch (UnsupportedEncodingException e1) {
+//			e1.printStackTrace();
+//		} 
+//	}
 	
 	/**
 	 * 解析歌曲数据
@@ -40,6 +40,7 @@ public class KuGou {
 	 * @throws JSONException 
 	 */
 	public static List<Song> parse(String name){
+		List<Song> songs = new ArrayList<>();
 		Document document = null;
 		try {
 			document = Jsoup.connect("http://mobilecdn.kugou.com/api/v3/search/song?format=json&keyword="+ name +"&page=1&pagesize=10").get();
@@ -51,7 +52,7 @@ public class KuGou {
 			JSONObject json = new JSONObject(allData);
 			JSONObject data = (JSONObject) json.get("data");
 			JSONArray infos =  (JSONArray) data.get("info");
-			for (int i = 0; i < infos.length(); i++) {
+			for (int i = infos.length()-1; i > 0; i--) {
 				JSONObject info = (JSONObject)infos.get(i);
 				String songname = (String) info.get("songname");
 				String hash = (String) info.get("hash");

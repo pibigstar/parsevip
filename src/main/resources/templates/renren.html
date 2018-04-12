@@ -3,11 +3,11 @@
 <title>VIP资源解析</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="VIP资源解析">
-<link rel="stylesheet" href="css/layer.css" id="layui_layer_skinlayercss"></head><body>
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/layer.css"/>
-<link rel="stylesheet" href="css/default.css"/>
-<link rel="stylesheet" href="css/fileinput.min.css"/>
+<link rel="stylesheet" href="/css/layer.css" id="layui_layer_skinlayercss"></head><body>
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/layer.css"/>
+<link rel="stylesheet" href="/css/default.css"/>
+<link rel="stylesheet" href="/css/fileinput.min.css"/>
 
 <!-- 导航栏 -->
     	<nav class="navbar navbar-default top-navigation">
@@ -25,9 +25,10 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="navbar-collapse">
 			  <ul class="nav navbar-nav">
-			    <li class="active"><a href="http://www.torrent.org.cn/">音乐真实地址解析<span class="sr-only">(current)</span></a></li>
-			    <li><a href="">视频真实地址解析</a></li>
-			    <li><a href="">百度文库真实地址解析</a></li>
+			    <li><a href="/music/kugou">酷狗音乐解析<span class="sr-only">(current)</span></a></li>
+			    <li><a href="/music/QQ">QQ音乐解析</a></li>
+			    <li><a href="/video/tengxun">腾讯视频解析</a></li>
+			    <li class="active"><a href="/video/renren">人人视频解析</a></li>
 			  </ul>
 			  <ul class="nav navbar-nav navbar-right">
 			    <li><a href="#">留言</a></li>
@@ -57,11 +58,12 @@
                     <div class="bs-callout bs-callout-info" id="callout-badges-ie8-empty">
                         <h4></h4>
                         <p>输入你要下载的音乐</p>
-                        <form method="GET" action="">
+                        <form>
                             <div class="input-group">
-                                <input type="text" name="hash" class="form-control" placeholder="音乐名">
+                                <input type="hidden" id="type" name="type" value="0">
+                                <input type="text" id="music" name="music" class="form-control" placeholder="音乐名">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" lay-filter="formDemo" type="submit">　<i class="glyphicon glyphicon-refresh"></i> 转换　</button>
+                                    <button class="layui-btn btn btn-default" onClick="submitAction();return false;">　<i class="glyphicon glyphicon-refresh"></i> 解析　</button>
                                 </span>
                             </div>
                         </form>
@@ -71,29 +73,10 @@
                     
                 </div>
 
-                <!-- QQ音乐 -->
-                <div>
-                    <h1>QQ音乐真实地址解析</h1>
-                    <div class="bs-callout bs-callout-info" id="callout-badges-ie8-empty">
-                        <h4></h4>
-                        <p>QQ音乐真实地址解析</p>
-                        <form method="GET" action="">
-                            <div class="input-group">
-                                <input type="text" name="hash" class="form-control" placeholder="音乐名">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="submit">　<i class="glyphicon glyphicon-refresh"></i> 转换　</button>
-                                </span>
-                            </div>
-                        </form>
-                    </div>
-                </div>
                 <div style="margin-top:50px;"></div>
-                <div class="panel panel-default">
-     <div class="panel-heading">歌曲列表</div>
-          <ul class="list-group" id="result-music">
-              <li class="list-group-item"><a href="http://www.torrent.org.cn/home/announce/detail/id/5.html"></a></li>
-          </ul>
-	</div>
+     <div class="panel panel-default" id="result">
+     		
+	 </div>
 
                 <!-- 法律 -->
                 <div>
@@ -118,14 +101,14 @@
                 </div>
 
 <!-- jquery -->
-<script src="js/jquery.min.js"></script>
+<script src="/js/jquery.js"></script>
 <!-- jquery cookie -->
-<script src="js/jquery.cookie.min.js"></script>
+<script src="/js/jquery.cookie.min.js"></script>
 
-<script src="js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 
 <!-- layer -->
-<script src="js/layer.js"></script>
+<script src="/js/layer.js"></script>
 
 
 <!-- 关于我们 -->      
@@ -134,7 +117,7 @@
 	<p>群号码：752146272</p>
 	<p>本群为付费加入，群费5元。群经费用于网站开发运维，服务器费用等。群内禁止发布和传播违法色情等信息</p>
 	<a target="_blank" href="https://shang.qq.com/wpa/qunwpa?idkey=875408aae56499d92ddcdda3966fa7c01e1d3b587b038d335917df7d41893170">
-	<img border="0" src="images/group.png" alt="VIP资源解析群" title="VIP资源解析群"></a>
+	<img border="0" src="/images/group.png" alt="VIP资源解析群" title="VIP资源解析群"></a>
 </div>
 
 <!-- 友情链接 -->
@@ -151,14 +134,14 @@
                 <div class="panel panel-success">
                     <div class="panel-heading">微信捐助二维码</div>
                     <div class="panel-body">
-                        <p style="margin:0 auto; width:205px;"><img src="images/tenpay.jpg" alt="财付通捐赠"></p>
+                        <p style="margin:0 auto; width:205px;"><img src="/images/tenpay.jpg" alt="财付通捐赠"></p>
                     </div>
                 </div>
 
                 <div class="panel panel-info">
                     <div class="panel-heading">支付宝捐助二维码</div>
                     <div class="panel-body">
-                        <p style="margin:0 auto; width:205px;"><img src="images/alipay.jpg" alt="支付宝捐赠"></p>
+                        <p style="margin:0 auto; width:205px;"><img src="/images/alipay.jpg" alt="支付宝捐赠"></p>
                     </div>
                 </div>
 <!--公告 -->
@@ -282,35 +265,29 @@
     </div>
     
     <script type="text/javascript">
-    
-    
-    
-    
-    layui.use('form', function(){
-  	  var form = layui.form;
-  	  
-  	  //监听提交
-  	  form.on('submit(formDemo)', function(data){
-  	    //layer.msg(JSON.stringify(data.field));
-  	    $.ajax({
-  	    	type: 'GET',
-  	    	url : 'music/seach'
-  	    	data: data,
-  			dataType: 'json'
-  			success:function(d){
-  				if(d.success){
-  					alter(d.data);
-  					console.info(d.data);
-  					musics = d.data;
-  					layui.msg(musics);
-  				}
-  			}
-  	    });
-  	    return true;
-  	  });
-  	});
-    
-    
+    function submitAction(){
+    	var type = $("#type").val();
+    	var music = $("#music").val();
+    	 $.ajax({
+   	    	type: 'POST',
+   	    	url : '/music/seach',
+   	    	data: {"type":type,"music":music},
+   			dataType: 'json',
+   			success:function(data){
+   				var d = data.data;
+   				if(data.success){
+   				  console.info(d);
+   				  $('#result').text('');
+   				  $("#result").append('<div class="panel-heading">歌曲列表,点击即可下载</div><ul class="list-group" id="result-music"></ul>');
+   				  d.forEach(function(item, index) {
+   					  var li = "<li class='list-group-item'><a href="+item.download+" download="+ item.songname+">"+item.singername+"--"+item.songname +"</a></li>";
+   					  $('#result-music').append(li);
+                   });
+   				}
+   			}
+    	});
+    }
+
     </script>
     
     
