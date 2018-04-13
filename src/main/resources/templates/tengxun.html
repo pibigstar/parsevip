@@ -54,14 +54,14 @@
             <div class="col-md-9">
                 <!-- 酷狗音乐 -->
                 <div>
-     				<h1>酷狗音乐真实地址解析</h1>
+     				<h1>腾讯视频真实地址解析</h1>
                     <div class="bs-callout bs-callout-info" id="callout-badges-ie8-empty">
                         <h4></h4>
-                        <p>输入你要下载的音乐</p>
+                        <p>输入你要解析的视频地址</p>
                         <form>
                             <div class="input-group">
-                                <input type="hidden" id="type" name="type" value="0">
-                                <input type="text" id="music" name="music" class="form-control" placeholder="音乐名">
+                             	<input type="hidden" id="type" name="type" value="0">
+                                <input type="text" id="video-url" name="url" class="form-control" placeholder="视频的URL">
                                 <span class="input-group-btn">
                                     <button class="layui-btn btn btn-default" onClick="submitAction();return false;">　<i class="glyphicon glyphicon-refresh"></i> 解析　</button>
                                 </span>
@@ -266,21 +266,21 @@
     
     <script type="text/javascript">
     function submitAction(){
-    	var type = $("#type").val();
-    	var music = $("#music").val();
+    	var videoUrl = $("#video-url").val();
+    	var type = $('#type').val();
     	 $.ajax({
    	    	type: 'POST',
-   	    	url : '/music/seach',
-   	    	data: {"type":type,"music":music},
+   	    	url : '/video/parse',
+   	    	data: {"url":videoUrl,"type":type},
    			dataType: 'json',
    			success:function(data){
    				var d = data.data;
    				if(data.success){
    				  console.info(d);
    				  $('#result').text('');
-   				  $("#result").append('<div class="panel-heading">歌曲列表,点击即可下载</div><ul class="list-group" id="result-music"></ul>');
+   				  $("#result").append('<div class="panel-heading">视频地址列表,点击即可下载</div><ul class="list-group" id="result-music"></ul>');
    				  d.forEach(function(item, index) {
-   					  var li = "<li class='list-group-item'><a href="+item.download+" download="+ item.songname+">"+item.singername+"--"+item.songname +"</a></li>";
+   					  var li = "<li class='list-group-item'><a href="+item.url+" download="+ item.url+">"+index +"</a></li>";
    					  $('#result-music').append(li);
                    });
    				}

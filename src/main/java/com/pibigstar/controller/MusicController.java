@@ -31,14 +31,15 @@ public class MusicController {
 			if (songs.size()>10&&songs!=null) {
 				songs = songs.subList(0, 10);
 			}
-			break;
+			return JsonResult.success(songs, "OK!");
 		case 1:
 			realUrl = QQMusic.parse(music);
-			break;
+			return JsonResult.success(realUrl, "OK!");
 		default:
 			break;
 		}
-		return JsonResult.success(realUrl, "OK!");
+		return null;
+		
 	}
 	
 }

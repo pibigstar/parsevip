@@ -15,6 +15,8 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.jsoup.Jsoup;
+
+import com.pibigstar.parsevip.bean.Video;
 /**
  * 腾讯视频真实地址解析
  * @author pibigstar
@@ -23,20 +25,29 @@ import org.jsoup.Jsoup;
 public class TengXun {
 	
 	private static String url = "https://v.qq.com/x/cover/i57sqefkulqgkb5.html"; //视频的地址
-	private static String definition = "sd";// 视频清晰度shd, hd, sd
-	private static List<String> urls = null;//存放最后得到的视频真实地址
 	private static SAXReader reader = null;
-	
-	public static void main(String[] args) throws UnsupportedEncodingException{
-		
-		String vid = getVid(url);
-		
-		urls = getRealUrls(vid,definition);
-		for (String string : urls) {
-			System.out.println(string);
+
+	/**
+	 * 通过正则拿到视频的vid
+	 * @param url
+	 * @return
+	 */
+	private static String getVid(String url) {
+		String vid = "";
+		try {
+			String vidContent = Jsoup.connect(url).get().toString();
+			Pattern pattern = Pattern.compile("\"V\":\".*\"");
+			Matcher matcher = pattern.matcher(vidContent);
+			if (matcher.find()) {
+				String first = matcher.group().replaceAll("\"V\":\"", "");
+				vid = first.substring(0, first.indexOf("\""));
+				//System.out.println(vid);
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
-		
+		return vid;
 	}
 
 	/**
@@ -46,9 +57,10 @@ public class TengXun {
 	 * @return
 	 * @throws UnsupportedEncodingException
 	 */
-	private static List<String> getRealUrls(String vid, String definition) throws UnsupportedEncodingException {
-		urls = new ArrayList<>();//存放最后得到的视频真实地址
-		
+	public static List<Video> parse(String url){
+		List<Video> urls = new ArrayList<>();//存放最后得到的视频真实地址
+		String vid = getVid(url);
+		String definition = "sd";
 		Map<String, String> data = new HashMap<>();
 		data.put("isHLS", "False");
 		data.put("charge", "0");
@@ -97,8 +109,10 @@ public class TengXun {
 						Document keyDocument = reader.read(new ByteArrayInputStream(keyContent.getBytes("UTF-8")));
 						Element rootElement = keyDocument.getRootElement();
 						String key = rootElement.element("key").getText().trim();
-						String url = url_prefix+"/"+filename+"?sdtfrom=v1010&vkey="+key;
-						urls.add(url);
+						String realurl = url_prefix+"/"+filename+"?sdtfrom=v1010&vkey="+key;
+						Video video = new Video();
+						video.setUrl(realurl);
+						urls.add(video);
 						
 					} catch (IOException e) {
 						e.printStackTrace();
@@ -107,31 +121,10 @@ public class TengXun {
 			}
 		} catch (DocumentException e) {
 			e.printStackTrace();
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
 		}
 		return urls;
 	}
 	
-	/**
-	 * 通过正则拿到视频的vid
-	 * @param url
-	 * @return
-	 */
-	public static String getVid(String url) {
-		String vid = "";
-		try {
-			String vidContent = Jsoup.connect(url).get().toString();
-			Pattern pattern = Pattern.compile("\"V\":\".*\"");
-			Matcher matcher = pattern.matcher(vidContent);
-			if (matcher.find()) {
-				String first = matcher.group().replaceAll("\"V\":\"", "");
-				vid = first.substring(0, first.indexOf("\""));
-				//System.out.println(vid);
-			}
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return vid;
-	}
-
 }
