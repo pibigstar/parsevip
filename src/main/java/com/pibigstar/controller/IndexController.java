@@ -22,5 +22,9 @@ public class IndexController {
 	public String toRenRenVideo() {
 		return "renren";
 	}
+	@RequestMapping("message")
+	public String toMessage() {
+		return "message";
+	}
 
 }

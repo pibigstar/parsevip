@@ -31,7 +31,7 @@
 			    <li><a href="/video/renren">人人视频解析</a></li>
 			  </ul>
 			  <ul class="nav navbar-nav navbar-right">
-			    <li><a href="#">留言</a></li>
+			    <li><a href="/message">留言</a></li>
 			    <li class="dropdown">
 			      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我的<span class="caret"></span></a>
 			      <ul class="dropdown-menu">
@@ -147,11 +147,8 @@
 <!--公告 -->
 <div class="panel panel-default">
      <div class="panel-heading">公告列表</div>
-          <ul class="list-group">
-              <li class="list-group-item"><a href="#">如果感觉不错，请加入QQ群一起讨论</a></li>
-              <li class="list-group-item"><a href="#">网站正式部署到服务器上</a></li>
-              <li class="list-group-item"><a href="#">请不要使用本站做任何盈利商业</a></li>
-              <li class="list-group-item"><a href="#">网站仅作为演示</a></li>
+          <ul id="announcement" class="list-group">
+
           </ul>
 </div>
 
@@ -264,6 +261,16 @@
     </div>
     
     <script type="text/javascript">
+    $(function(){
+    	 $.get("/announcement",function(data){
+    		 var d = data.data;
+    		 d.forEach(function(item,index){
+    			 $("#announcement").append('<li class="list-group-item"><a href="#">'+item.title+'</a></li>');
+    		 });
+    	 });
+    });
+    
+    
     function submitAction(){
     	var type = $("#type").val();
     	var music = $("#music").val();
@@ -288,7 +295,5 @@
     }
 
     </script>
-    
-    
 </body>
 </html>
