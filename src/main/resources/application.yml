@@ -11,7 +11,7 @@ spring:
   resources:
     static-locations: classpath:/static/
   jpa:
-    show-sql: true
+    show-sql: false
     hibernate:
       ddl-auto: update
     database: mysql

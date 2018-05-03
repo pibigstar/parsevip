@@ -1,13 +1,29 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>VIP资源解析</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="VIP资源解析">
-<link rel="stylesheet" href="/css/layer.css" id="layui_layer_skinlayercss"></head><body>
+<link rel="stylesheet" href="/css/layer.css" id="layui_layer_skinlayercss">
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/layer.css"/>
 <link rel="stylesheet" href="/css/default.css"/>
 <link rel="stylesheet" href="/css/fileinput.min.css"/>
+
+<!-- 百度统计 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?1fa66a7c3a1335c88fcd7b713d5b1bd8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+<body>
+
 
 <!-- 导航栏 -->
     	<nav class="navbar navbar-default top-navigation">
@@ -110,8 +126,6 @@
 <!-- layer -->
 <script src="/js/layer.js"></script>
 
-<!-- 蜂巢特效 -->
-<script color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="/js/beehive.js"></script>
 
 
 <!-- 关于我们 -->      
@@ -129,10 +143,16 @@
     友情链接开放申请
     <a href="http://www.jsons.cn/">JSON工具</a>
     <a href="https://tool.lu/coderunner/">在线代码运行</a>
+    <h1>统计</h1>
+    已访问次数：
+    <!-- start http://count.knowsky.com -->
+<script src="http://count.knowsky.com/count1/count.asp?id=171948&sx=1&ys=32" language="JavaScript" charset="gb2312"></script>
+<!-- Powered by http://www.knowsky.com -->
+    <a href="https://tongji.baidu.com/" target="_blank">百度统计</a>
 </div>
- </div>
+</div>
 
-			<!-- 右侧捐助码 -->
+		<!-- 右侧捐助码 -->
             <div class="col-md-3">
                 <div class="panel panel-success">
                     <div class="panel-heading">微信捐助二维码</div>
@@ -265,6 +285,14 @@
     
     <script type="text/javascript">
     $(function(){
+    	//如果是手机则不显示蜂巢特效
+    	if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    	} else {
+    		<!-- 蜂巢特效 -->
+    	    $("body").append('<script color="0,0,255" opacity="0.7" zIndex="-2" count="99" src="/js/beehive.js"><//script>')
+    	}
+    	
+    	
     	 $.get("/announcement",function(data){
     		 var d = data.data;
     		 d.forEach(function(item,index){
