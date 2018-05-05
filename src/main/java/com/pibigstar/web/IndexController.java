@@ -1,13 +1,14 @@
-package com.pibigstar.controller;
+package com.pibigstar.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class IndexController {
+public class IndexController extends BaseController{
 	
 	@RequestMapping("music/kugou")
 	public String toKuGouMusic() {
+		log.info(qqgroup);
 		return "index";
 	}
 	@RequestMapping("music/QQ")

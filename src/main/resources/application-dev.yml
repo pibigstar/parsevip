@@ -1,0 +1,35 @@
+##################开发环境################
+
+###########spring配置##########
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    data-username: root
+    data-password: 123456
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    database: mysql
+########静态资源访问配置##############
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/static/
+
+  thymeleaf:
+    cache: false #开启模板热部署
+    
+
+#########################自定义配置#################################
+#############使用：${com.pibigstar.parsevip.qqgroup}##############################
+com:
+  pibigstar:
+    parsevip:
+      qqgroup: 752146272
+      addurl : https://shang.qq.com/wpa/qunwpa?idkey=875408aae56499d92ddcdda3966fa7c01e1d3b587b038d335917df7d41893170
+      welcome : 欢迎加入QQ群：${com.pibigstar.parsevip.qqgroup}
+

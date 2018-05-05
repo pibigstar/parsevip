@@ -1,4 +1,4 @@
-package com.pibigstar.controller;
+package com.pibigstar.web;
 
 import java.util.List;
 
@@ -7,19 +7,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pibigstar.domain.Announcement;
+import com.pibigstar.domain.result.MyResponse;
 import com.pibigstar.service.AnnouncementService;
-import com.pibigstar.util.JsonResult;
 
+/**
+ * 公告
+ * @author pibigstar
+ *
+ */
 @RestController
-public class AnnouncementController {
+public class AnnouncementController extends BaseController{
 	@Autowired
 	private AnnouncementService announcementService;
 	
 	@RequestMapping(value = "/announcement")
-	public JsonResult listAnnoun() {
+	public MyResponse listAnnoun() {
 		List<Announcement> list = announcementService.list();
-		JsonResult jsonResult = JsonResult.success(list);
-		return jsonResult;
+		return success(list);
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.pibigstar.controller;
+package com.pibigstar.web;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,20 +6,28 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pibigstar.common.aop.MyLogger;
+import com.pibigstar.domain.result.MyResponse;
 import com.pibigstar.parsevip.bean.Song;
 import com.pibigstar.parsevip.music.KuGou;
 import com.pibigstar.parsevip.music.QQMusic;
-import com.pibigstar.util.JsonResult;
+
+/**
+ * 音乐
+ * @author pibigstar
+ *
+ */
 
 @RestController
 @RequestMapping("music")
-public class MusicController {
-	private Logger log = LoggerFactory.getLogger(MusicController.class);
+public class MusicController extends BaseController{
 	
-	@RequestMapping("seach")
-	public JsonResult seach(String type,String music) {
+	@MyLogger(description = "音乐解析")
+	@RequestMapping(value = "seach",method = RequestMethod.POST)
+	public MyResponse seach(String type,String music) {
 		
 		log.info("type:"+type+" music:"+music);
 		int key = Integer.parseInt(type);
@@ -31,10 +39,10 @@ public class MusicController {
 			if (songs.size()>10&&songs!=null) {
 				songs = songs.subList(0, 10);
 			}
-			return JsonResult.success(songs, "OK!");
+			return success("OK!", songs);
 		case 1:
 			realUrl = QQMusic.parse(music);
-			return JsonResult.success(realUrl, "OK!");
+			return success("OK!", realUrl);
 		default:
 			break;
 		}
