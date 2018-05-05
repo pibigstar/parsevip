@@ -27,8 +27,7 @@ public class MusicController extends BaseController{
 	
 	@MyLogger(description = "音乐解析")
 	@RequestMapping(value = "seach",method = RequestMethod.POST)
-	public MyResponse seach(String type,String music) {
-		
+	public MyResponse seach(String type,String music) throws Exception {
 		log.info("type:"+type+" music:"+music);
 		int key = Integer.parseInt(type);
 		List<Song> songs = new ArrayList<>();
@@ -42,12 +41,11 @@ public class MusicController extends BaseController{
 			return success("OK!", songs);
 		case 1:
 			realUrl = QQMusic.parse(music);
-			return success("OK!", realUrl);
+			throw new Exception("测试异常抛出");
+			//return success("OK!", realUrl);
 		default:
-			break;
+			throw new Exception();
 		}
-		return null;
-		
 	}
 	
 }

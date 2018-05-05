@@ -27,5 +27,9 @@ public class IndexController extends BaseController{
 	public String toMessage() {
 		return "message";
 	}
+	@RequestMapping("exception")
+	public String toError() {
+		return "exception";
+	}
 
 }

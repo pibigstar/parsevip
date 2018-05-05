@@ -15,7 +15,7 @@ public class Constant {
 	public static String PASSWORD_KEY = "@#$%^&*()OPG#$%^&*(HG";
 	public static String default_logo="img/logo.jpg";
 	public static int COOKIE_TIMEOUT= 30*24*60*60;
-	public static String DEFAULT_ERROR_VIEW = "error";
+	public static String DEFAULT_ERROR_VIEW = "exception";
 	
 	 @Autowired(required = true)
 	  public void setBasePath(@Value("${parsevip.base.path}")String basePath) {

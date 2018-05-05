@@ -5,7 +5,7 @@
 <title>错误！</title>
 </head>
 <body>
-<h2>错误代码：${errorCode}</h2>
-<p>${message}</p>
+<h2 th:text="'错误代码：'+${exception.resCode}"></h2>
+<p th:text="${exception.resMsg}"></p>
 </body>
 </html>

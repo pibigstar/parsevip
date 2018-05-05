@@ -28,11 +28,13 @@ public class GlobalExceptionHandler {
 	 * @return
 	 */
 	@ExceptionHandler(Exception.class)
-	@ResponseBody
-	ModelAndView handleException(Exception e, HttpServletRequest request) {
+	ModelAndView handleException(Exception e, HttpServletRequest request) throws Exception{
 		log.info("请求地址：" + request.getRequestURL());
         ModelAndView mav = new ModelAndView();
-        log.error("异常信息：",e);
+        //log.error("异常信息：",e);
+        log.error("异常信息："+e.getMessage());
+        mav.addObject("exception",new MyResponse(e));
+        mav.addObject("url", request.getRequestURL());
         mav.setViewName(Constant.DEFAULT_ERROR_VIEW);
         return mav;
 	}
@@ -43,6 +45,8 @@ public class GlobalExceptionHandler {
 	 * @param e
 	 * @return
 	 */
+	@ExceptionHandler(BusinessException.class)
+	@ResponseBody
 	MyResponse handleBusinessException(BusinessException e) {
 		log.error(e.getMessage(),e);
 		return new MyResponse(e.getErrorCode(),e.getMessage());
