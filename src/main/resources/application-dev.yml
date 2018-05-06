@@ -25,11 +25,14 @@ spring:
     
 
 #########################自定义配置#################################
-#############使用：${com.pibigstar.parsevip.qqgroup}##############################
-com:
-  pibigstar:
-    parsevip:
-      qqgroup: 752146272
-      addurl : https://shang.qq.com/wpa/qunwpa?idkey=875408aae56499d92ddcdda3966fa7c01e1d3b587b038d335917df7d41893170
-      welcome : 欢迎加入QQ群：${com.pibigstar.parsevip.qqgroup}
+#############使用：${parsevip.QQ.qqgroup}##############################
+parsevip:
+  QQ:
+    qqgroup: 752146272
+    addgroupUrl : https://shang.qq.com/wpa/qunwpa?idkey=875408aae56499d92ddcdda3966fa7c01e1d3b587b038d335917df7d41893170
+    welcome : 欢迎加入QQ群：${parsevip.QQ.qqgroup}
+  video:
+    src: http://p8b1ddiwd.bkt.clouddn.com/video/sugar.mp4 #首页播放视频链接
+  install:
+    src: http://p8b1ddiwd.bkt.clouddn.com/resources/插件安装包.zip
 

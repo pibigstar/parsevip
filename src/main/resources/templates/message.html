@@ -1,18 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>VIP资源解析</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="VIP资源解析">
-<link rel="stylesheet" href="/css/layer.css"
-	id="layui_layer_skinlayercss">
+<link rel="stylesheet" href="/css/layer.css" id="layui_layer_skinlayercss">
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/layer.css"/>
+<link rel="stylesheet" href="/css/default.css"/>
+<link rel="stylesheet" href="/css/fileinput.min.css"/>
 </head>
 <body>
-	<link rel="stylesheet" href="/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="/css/layer.css" />
-	<link rel="stylesheet" href="/css/default.css" />
-	<link rel="stylesheet" href="/css/fileinput.min.css" />
 
 	<!-- 导航栏 -->
 	<nav class="navbar navbar-default top-navigation">
@@ -30,26 +27,43 @@
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="/music/kugou">酷狗音乐解析<span
-							class="sr-only">(current)</span></a></li>
-					<li><a href="/music/QQ">QQ音乐解析</a></li>
-					<li><a href="/video/tengxun">腾讯视频解析</a></li>
-					<li><a href="/video/renren">人人视频解析</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#">留言</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">我的<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">会员</a></li>
-							<li><a href="#">积分</a></li>
-							<li><a href="#">邮箱</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">退出</a></li>
-						</ul></li>
-				</ul>
+							  <ul class="nav navbar-nav">
+			  	 <!-- 音乐解析 -->
+			  	 <li class="dropdown">
+			      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">音乐解析<span class="caret"></span></a>
+			      <ul class="dropdown-menu">
+			        <li><a href="/music/kugou">酷狗音乐解析</a></li>
+			        <li><a href="/music/QQ">QQ音乐解析</a></li>
+			      </ul>
+			    </li>
+			    <!-- 视频解析 -->
+			  	 <li class="dropdown">
+			      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">视频解析<span class="caret"></span></a>
+			      <ul class="dropdown-menu">
+			        <li><a href="/video/tengxun">腾讯视频解析</a></li>
+			        <li><a href="/video/renren">人人视频解析</a></li>
+			      </ul>
+			    </li>
+			    <!-- VIP视频观看 -->
+			    <li><a href="/look">VIP视频在线观看</a></li>
+			    <li><a href="/install">VIP插件安装</a></li>
+			  </ul>
+			 <!-- 导航栏右边 -->
+			  <ul class="nav navbar-nav navbar-right">
+			  	 <!-- 留言 -->
+			    <li class="active"><a href="/message">留言</a></li>
+			     <!--登录 -->
+			    <li class="dropdown">
+			      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我的<span class="caret"></span></a>
+			      <ul class="dropdown-menu">
+			        <li><a href="#">会员</a></li>
+			        <li><a href="#">积分</a></li>
+			        <li><a href="#">邮箱</a></li>
+			        <li role="separator" class="divider"></li>
+			        <li><a href="#">退出</a></li>
+			      </ul>
+			    </li>
+			  </ul>
 			</div>
 		</div>
 	</nav>

@@ -24,15 +24,20 @@ import com.pibigstar.domain.result.MyResponse;
 public class BaseController {
 	protected Logger log = LoggerFactory.getLogger(this.getClass());
 	
-	@Value("${com.pibigstar.parsevip.qqgroup}")
-	protected String qqgroup;
-	@Value("${com.pibigstar.parsevip.addurl}")
-	protected String addurl;
-	@Value("${com.pibigstar.parsevip.welcome}")
-	protected String welcome;
-	
+
 	@Autowired
 	protected HttpServletRequest request;
+	
+	@Value("${parsevip.QQ.qqgroup}")
+	protected String qqgroup;
+	@Value("${parsevip.QQ.addgroupUrl}")
+	protected String addgroupUrl;
+	@Value("${parsevip.QQ.welcome}")
+	protected String welcome;
+	@Value("${parsevip.video.src}")
+	protected String videoSrc;
+	@Value("${parsevip.install.src}")
+	protected String installSrc;
 	
 	
 	/**
@@ -73,6 +78,16 @@ public class BaseController {
 	 */
 	protected User getUser() {
 		return (User) getSession().getAttribute(Constant.LOGIN_USER_SESSION_KEY);
+	}
+	
+	/**
+	 * 将配置文件中的值放到Request中
+	 */
+	protected void setProperties() {
+		request.setAttribute("qqGroup", qqgroup);
+		request.setAttribute("addgroupUrl", addgroupUrl);
+		request.setAttribute("videoSrc", videoSrc);
+		request.setAttribute("installSrc", installSrc);
 	}
 	
 

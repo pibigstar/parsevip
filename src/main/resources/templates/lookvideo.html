@@ -10,8 +10,7 @@
 <link rel="stylesheet" href="/css/fileinput.min.css"/>
 </head>
 <body>
-
-<!-- 导航栏 -->
+		<!-- 导航栏 -->
     	<nav class="navbar navbar-default top-navigation">
 		<div class="container">
 			<div class="navbar-header">
@@ -44,7 +43,7 @@
 			      </ul>
 			    </li>
 			    <!-- VIP视频观看 -->
-			    <li><a href="/look">VIP视频在线观看</a></li>
+			    <li class="active"><a href="/look">VIP视频在线观看</a></li>
 			    <li><a href="/install">VIP插件安装</a></li>
 			  </ul>
 			 <!-- 导航栏右边 -->
@@ -70,34 +69,40 @@
 <!-- content -->
     <div class="container">
         <div class="row">
-
             <div class="col-md-9">
-                <!-- 酷狗音乐 -->
-                <div>
-     				<h1>人人视频真实地址解析</h1>
-                    <div class="bs-callout bs-callout-info" id="callout-badges-ie8-empty">
-                        <h4></h4>
-                        <p>输入你要解析的视频地址</p>
-                        <form>
-                            <div class="input-group">
-                                <input type="hidden" id="type" name="type" value="1">
-                                <input type="text" id="video-url" name="music" class="form-control" placeholder="视频地址">
-                                <span class="input-group-btn">
-                                    <button class="layui-btn btn btn-default" onClick="submitAction();return false;">　<i class="glyphicon glyphicon-refresh"></i> 解析　</button>
-                                </span>
-                            </div>
-                        </form>
+                <!--视频显示区 -->
+                <div id="panel-video" class="panel-body">
+                	<!-- http://112.5.254.248/he.yinyuetai.com/uploads/videos/common/E66B014BC3F12D6FD156994CB748259F.flv?sc=7f5c074059cd03e6 -->
+                	<embed id="play_video" controls autoplay width="830px" height="600px" th:src="${videoSrc}"></embed>
+            	</div>
+              
+         <!-- 接口选择区 -->    
+     	<div class="col-md-14 column">
+            <div class="col-md-3" style="margin-top: 8px;">
+                <div class="input-group" style="width: 100%;">
+                    <select id="play_interface" class="form-control input-lg">
+                    	<option value="http://www.wmxz.wang/video.php?url="> 无名小站</option>
+						<option value="http://api.97kn.com/?url=')">1号接口</option>
+						<option value="http://jx.aeidu.cn/index405.php?url=">2号接口</option>
+						<option value="http://api.nepian.com/ckparse/?url=">3号接口</option>
+						<option value="http://api.51ckm.com/jx.php?url=">4号接口</option>
+						<option value="https://api.flvsp.com/?url=">5号接口</option>
+						<option value="http://jqaaa.com/jx.php?url=">6号接口</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-7" style="margin-top: 8px;">
+                <div class="input-group" style="width: 100%;">
+                    <input class="form-control input-lg" id="url" type="text" name="url" placeholder="输入播放地址"></div>
+            </div>
+            <div>
+                <div class="col-md-2" style="margin-top: 8px;">
+                    <div class="col-md-14 column">
                     </div>
-                </div>
-                <div style="margin-top:30px;">
-                    
-                </div>
-
-                <div style="margin-top:50px;"></div>
-     <div class="panel panel-default" id="result">
-     		
-	 </div>
-
+                    <button id="play" onClick="submitAction()" class="btn btn-default btn-lg btn-block">立即播放</button></div>
+            </div>
+    	</div>
+            <div style="margin-top:100px;"></div>
                 <!-- 法律 -->
                 <div>
                     <h1>法律</h1>
@@ -129,7 +134,6 @@
 
 <!-- layer -->
 <script src="/js/layer.js"></script>
-
 
 
 <!-- 关于我们 -->      
@@ -174,9 +178,9 @@
 <!--公告 -->
 <div class="panel panel-default">
      <div class="panel-heading">公告列表</div>
-           <ul id="announcement" class="list-group">
+          <ul id="announcement" class="list-group">
 
-          	</ul>
+          </ul>
 </div>
 
  <div class="panel panel-default">
@@ -288,15 +292,14 @@
     </div>
     
     <script type="text/javascript">
-    
     $(function(){
-    	
     	//如果是手机则不显示蜂巢特效
     	if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
     	} else {
     		<!-- 蜂巢特效 -->
     	    $("body").append('<script color="0,0,255" opacity="0.7" zIndex="-2" count="99" src="/js/beehive.js"><//script>')
     	}
+    	
    	 $.get("/announcement",function(data){
    		 var d = data.data;
    		 d.forEach(function(item,index){
@@ -305,30 +308,18 @@
    	 });
    });
     
-    
+    //播放
     function submitAction(){
-    	var type = $("#type").val();
-    	var videoUrl = $("#video-url").val();
-    	 $.ajax({
-   	    	type: 'POST',
-   	    	url : '/video/parse',
-   	    	data: {"type":type,"url":videoUrl},
-   			dataType: 'json',
-   			success:function(data){
-   				var d = data.data;
-   				if(data.success){
-   				  console.info(d);
-   				  $('#result').text('');
-   				  $("#result").append('<div class="panel-heading">视频列表,点击即可下载</div><ul class="list-group" id="result-music"></ul>');
-   					  var li = "<li class='list-group-item'><a href="+d+" download="+ d+">"+ d +"</a></li>";
-   					  $('#result-music').append(li);
-   				}
-   			}
-    	});
+    	var play_interface = $("#play_interface");
+        $("#play").click(function(){
+            var inter = $("#play_interface option:selected").val();
+            $("#play_video").remove();
+            var url = $("#url").val();
+            var newUrl = inter + url;
+            $('<embed id="play_video" src='+newUrl+'controls autoplay width="830px" height="600px"></embed>').appendTo("#panel-video");
+            //$('<embed src="'+srcUrl+'"  allowFullScreen="true" id="embedid"  quality="high" width="620" height="500" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash" ></embed>').appendTo('#mod_player');
+        })
     }
-
     </script>
-    
-    
 </body>
 </html>
