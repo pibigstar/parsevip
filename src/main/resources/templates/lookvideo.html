@@ -8,7 +8,24 @@
 <link rel="stylesheet" href="/css/layer.css"/>
 <link rel="stylesheet" href="/css/default.css"/>
 <link rel="stylesheet" href="/css/fileinput.min.css"/>
+<!-- QQ登录 -->
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" th:data-appid="${appId}" th:data-redirecturi="${redirecturi}" data-callback="true" charset="utf-8" ></script>
+<script src="/js/QQLogin.js"></script>
+<!-- jquery -->
+<script src="/js/jquery.js"></script>
+<!-- bootstrap -->
+<script src="/js/bootstrap.min.js"></script>
+<!-- layer -->
+<script src="/js/layer.js"></script>
 </head>
+<style>
+/* QQ头像圆角设置*/
+#qqimg{
+border-radius: 15px;
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px;
+}
+</style>
 <body>
 		<!-- 导航栏 -->
     	<nav class="navbar navbar-default top-navigation">
@@ -51,16 +68,7 @@
 			  	 <!-- 留言 -->
 			    <li><a href="/message">留言</a></li>
 			     <!--登录 -->
-			    <li class="dropdown">
-			      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我的<span class="caret"></span></a>
-			      <ul class="dropdown-menu">
-			        <li><a href="#">会员</a></li>
-			        <li><a href="#">积分</a></li>
-			        <li><a href="#">邮箱</a></li>
-			        <li role="separator" class="divider"></li>
-			        <li><a href="#">退出</a></li>
-			      </ul>
-			    </li>
+			    <li><a id="qqLoginBtn" href="#">QQ登录</a></li>
 			  </ul>
 			</div>
 		</div>
@@ -72,8 +80,7 @@
             <div class="col-md-9">
                 <!--视频显示区 -->
                 <div id="panel-video" class="panel-body">
-                	<!-- http://112.5.254.248/he.yinyuetai.com/uploads/videos/common/E66B014BC3F12D6FD156994CB748259F.flv?sc=7f5c074059cd03e6 -->
-                	<embed id="play_video" controls autoplay width="830px" height="600px" th:src="${videoSrc}"></embed>
+                	<iframe id="play_video" height=600 width=830 th:src="${videoSrc}" frameborder=0 'allowfullscreen'></iframe>
             	</div>
               
          <!-- 接口选择区 -->    
@@ -99,7 +106,7 @@
                 <div class="col-md-2" style="margin-top: 8px;">
                     <div class="col-md-14 column">
                     </div>
-                    <button id="play" onClick="submitAction()" class="btn btn-default btn-lg btn-block">立即播放</button></div>
+                    <button id="play" class="btn btn-default btn-lg btn-block">立即播放</button></div>
             </div>
     	</div>
             <div style="margin-top:100px;"></div>
@@ -124,18 +131,6 @@
                         <p>调用接口需要先 <code>申请</code>，审核通过以后才能使用</p>
                     </div>
                 </div>
-
-<!-- jquery -->
-<script src="/js/jquery.js"></script>
-<!-- jquery cookie -->
-<script src="/js/jquery.cookie.min.js"></script>
-
-<script src="/js/bootstrap.min.js"></script>
-
-<!-- layer -->
-<script src="/js/layer.js"></script>
-
-
 <!-- 关于我们 -->      
 <div>
     <h1>关于我们</h1>
@@ -306,6 +301,17 @@
    			 $("#announcement").append('<li class="list-group-item"><a href="#">'+item.title+'</a></li>');
    		 });
    	 });
+   	 
+   	//播放视频
+ 	var play_interface = $("#play_interface");
+    $("#play").click(function(){
+        var inter = $("#play_interface option:selected").val();
+        $("#play_video").remove();
+        var url = $("#url").val();
+        var newUrl = inter + url;
+        $("<iframe id='play_video' height=600 width=830  src="+newUrl+"frameborder=0 'allowfullscreen'></iframe>").appendTo("#panel-video");
+    });
+   	 
    });
     
     //播放
@@ -316,9 +322,8 @@
             $("#play_video").remove();
             var url = $("#url").val();
             var newUrl = inter + url;
-            $('<embed id="play_video" src='+newUrl+'controls autoplay width="830px" height="600px"></embed>').appendTo("#panel-video");
-            //$('<embed src="'+srcUrl+'"  allowFullScreen="true" id="embedid"  quality="high" width="620" height="500" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash" ></embed>').appendTo('#mod_player');
-        })
+            $("<iframe id='play_video' height=600 width=830  src="+newUrl+"frameborder=0 'allowfullscreen'></iframe>").appendTo("#panel-video");
+        });
     }
     </script>
 </body>

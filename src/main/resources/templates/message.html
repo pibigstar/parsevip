@@ -8,7 +8,24 @@
 <link rel="stylesheet" href="/css/layer.css"/>
 <link rel="stylesheet" href="/css/default.css"/>
 <link rel="stylesheet" href="/css/fileinput.min.css"/>
+<!-- QQ登录 -->
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" th:data-appid="${appId}" th:data-redirecturi="${redirecturi}" data-callback="true" charset="utf-8" ></script>
+<script src="/js/QQLogin.js"></script>
+<!-- jquery -->
+<script src="/js/jquery.js"></script>
+<!-- bootstrap -->
+<script src="/js/bootstrap.min.js"></script>
+<!-- layer -->
+<script src="/js/layer.js"></script>
 </head>
+<style>
+/* QQ头像圆角设置*/
+#qqimg{
+border-radius: 15px;
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px;
+}
+</style>
 <body>
 
 	<!-- 导航栏 -->
@@ -53,33 +70,14 @@
 			  	 <!-- 留言 -->
 			    <li class="active"><a href="/message">留言</a></li>
 			     <!--登录 -->
-			    <li class="dropdown">
-			      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我的<span class="caret"></span></a>
-			      <ul class="dropdown-menu">
-			        <li><a href="#">会员</a></li>
-			        <li><a href="#">积分</a></li>
-			        <li><a href="#">邮箱</a></li>
-			        <li role="separator" class="divider"></li>
-			        <li><a href="#">退出</a></li>
-			      </ul>
-			    </li>
+			    <li><a id="qqLoginBtn" href="#">QQ登录</a></li>
 			  </ul>
 			</div>
 		</div>
 	</nav>
 
-<!-- jquery -->
-<script src="/js/jquery.js"></script>
-<!-- jquery cookie -->
-<script src="/js/jquery.cookie.min.js"></script>
 
-<script src="/js/bootstrap.min.js"></script>
-
-<!-- layer -->
-<script src="/js/layer.js"></script>
-
-
-<!--PC和WAP自适应版-->
+<!--留言插件，PC和WAP自适应版-->
 <div id="SOHUCS" sid="test" ></div> 
 <script type="text/javascript"> 
 (function(){ 
@@ -88,6 +86,14 @@ var conf = 'prod_22777e3168cef0463e299c52c50cf592';
 var width = window.innerWidth || document.documentElement.clientWidth; 
 if (width < 960) { 
 window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
-	
+
+<script>
+	$(function(){
+		if(!QC.Login.check()){
+			alert("请先登录");
+			window.history.back(-1); 
+		}
+	})
+</script>
 </body>
 </html>

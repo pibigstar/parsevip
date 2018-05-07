@@ -7,9 +7,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController extends BaseController{
 	
 	@RequestMapping("/")
-	public String toIndex() {
+	public String toDefaultIndex() {
 		setProperties();
 		return "kugou";
+	}
+	//登录成功后的回调地址
+	@RequestMapping("/index")
+	public String toIndex() {
+		setProperties();
+		return "index";
 	}
 	@RequestMapping("/music/kugou")
 	public String toKuGouMusic() {

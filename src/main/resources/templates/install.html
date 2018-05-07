@@ -9,8 +9,24 @@
 <link rel="stylesheet" href="/css/layer.css"/>
 <link rel="stylesheet" href="/css/default.css"/>
 <link rel="stylesheet" href="/css/fileinput.min.css"/>
-
+<!-- QQ登录 -->
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101478042" data-redirecturi="http://localhost:8080/index" data-callback="true" charset="utf-8" ></script>
+<script src="/js/QQLogin.js"></script>
+<!-- jquery -->
+<script src="/js/jquery.js"></script>
+<!-- bootstrap -->
+<script src="/js/bootstrap.min.js"></script>
+<!-- layer -->
+<script src="/js/layer.js"></script>
 </head>
+<style>
+/* QQ头像圆角设置*/
+#qqimg{
+border-radius: 15px;
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px;
+}
+</style>
 <body>
 
 
@@ -54,20 +70,9 @@
 			  <ul class="nav navbar-nav navbar-right">
 			  	 <!-- 留言 -->
 			    <li><a href="/message">留言</a></li>
-			     <!--登录 -->
-			    <li class="dropdown">
-			      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我的<span class="caret"></span></a>
-			      <ul class="dropdown-menu">
-			        <li><a href="#">会员</a></li>
-			        <li><a href="#">积分</a></li>
-			        <li><a href="#">邮箱</a></li>
-			        <li role="separator" class="divider"></li>
-			        <li><a href="#">退出</a></li>
-			      </ul>
-			    </li>
+			  	 <!--登录 -->
+			    <li><a id="qqLoginBtn" href="#">QQ登录</a></li>
 			  </ul>
-			  
-			  
 			</div>
 		</div>
 	</nav>
@@ -115,18 +120,6 @@
                         <p>调用接口需要先 <code>申请</code>，审核通过以后才能使用</p>
                     </div>
                 </div>
-
-<!-- jquery -->
-<script src="/js/jquery.js"></script>
-<!-- jquery cookie -->
-<script src="/js/jquery.cookie.min.js"></script>
-
-<script src="/js/bootstrap.min.js"></script>
-
-<!-- layer -->
-<script src="/js/layer.js"></script>
-
-
 
 <!-- 关于我们 -->      
 <div>
@@ -298,28 +291,12 @@
     	 });
     });
     
-    
-    function submitAction(){
-    	var type = $("#type").val();
-    	var music = $("#music").val();
-    	 $.ajax({
-   	    	type: 'POST',
-   	    	url : '/music/seach',
-   	    	data: {"type":type,"music":music},
-   			dataType: 'json',
-   			success:function(data){
-   				var d = data.data;
-   				if(data.success){
-   				  console.info(d);
-   				  $('#result').text('');
-   				  $("#result").append('<div class="panel-heading">歌曲列表,点击即可下载</div><ul class="list-group" id="result-music"></ul>');
-   				  d.forEach(function(item, index) {
-   					  var li = "<li class='list-group-item'><a href="+item.download+" download="+ item.songname+">"+item.singername+"--"+item.songname +"</a></li>";
-   					  $('#result-music').append(li);
-                   });
-   				}
-   			}
-    	});
+    function toMessage(){
+    	if(QC.Login.check()){
+    		window.location.href = "/message";
+    	}else{
+    		alert("请先登录QQ");
+    	}
     }
     </script>
 </body>

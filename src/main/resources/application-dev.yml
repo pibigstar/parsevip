@@ -27,12 +27,19 @@ spring:
 #########################自定义配置#################################
 #############使用：${parsevip.QQ.qqgroup}##############################
 parsevip:
+  # 加群信息配置
   QQ:
     qqgroup: 752146272
     addgroupUrl : https://shang.qq.com/wpa/qunwpa?idkey=875408aae56499d92ddcdda3966fa7c01e1d3b587b038d335917df7d41893170
     welcome : 欢迎加入QQ群：${parsevip.QQ.qqgroup}
+  #首页播放视频链接配置
   video:
-    src: http://p8b1ddiwd.bkt.clouddn.com/video/sugar.mp4 #首页播放视频链接
+    src: http://p8b1ddiwd.bkt.clouddn.com/video/sugar.mp4 
+  # 插件安装配置
   install:
     src: http://p8b1ddiwd.bkt.clouddn.com/resources/插件安装包.zip
+  # QQ登录配置
+  QQLogin: 
+    appId: 应用的appId
+    redirecturi: 回调地址
 

@@ -38,6 +38,10 @@ public class BaseController {
 	protected String videoSrc;
 	@Value("${parsevip.install.src}")
 	protected String installSrc;
+	@Value("${parsevip.QQLogin.appId}")
+	protected String appId;
+	@Value("${parsevip.QQLogin.redirecturi}")
+	protected String redirecturi;
 	
 	
 	/**
@@ -88,6 +92,8 @@ public class BaseController {
 		request.setAttribute("addgroupUrl", addgroupUrl);
 		request.setAttribute("videoSrc", videoSrc);
 		request.setAttribute("installSrc", installSrc);
+		request.setAttribute("redirecturi", redirecturi);
+		request.setAttribute("appId", appId);
 	}
 	
 

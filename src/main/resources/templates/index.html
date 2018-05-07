@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>VIP资源解析</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="VIP资源解析">
+<link rel="icon" href="/images/favicon.ico" type="image/x-icon" /> 
 <link rel="stylesheet" href="/css/layer.css" id="layui_layer_skinlayercss">
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/layer.css"/>
@@ -17,7 +19,18 @@
 <script src="/js/bootstrap.min.js"></script>
 <!-- layer -->
 <script src="/js/layer.js"></script>
+<!-- 百度统计 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?1fa66a7c3a1335c88fcd7b713d5b1bd8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </head>
+
 <style>
 /* QQ头像圆角设置*/
 #qqimg{
@@ -26,7 +39,9 @@ border-radius: 15px;
 -moz-border-radius: 15px;
 }
 </style>
+
 <body>
+
 
 <!-- 导航栏 -->
     	<nav class="navbar navbar-default top-navigation">
@@ -43,7 +58,7 @@ border-radius: 15px;
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="navbar-collapse">
-			  			  <ul class="nav navbar-nav">
+			  <ul class="nav navbar-nav">
 			  	 <!-- 音乐解析 -->
 			  	 <li class="dropdown">
 			      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">音乐解析<span class="caret"></span></a>
@@ -67,10 +82,11 @@ border-radius: 15px;
 			 <!-- 导航栏右边 -->
 			  <ul class="nav navbar-nav navbar-right">
 			  	 <!-- 留言 -->
-			    <li><a href="/message">留言</a></li>
-			 	 <!--登录 -->
+			    <li><a href="javascript:toMessage();">留言</a></li>
+			     <!--登录 -->
 			    <li><a id="qqLoginBtn" href="#">QQ登录</a></li>
 			  </ul>
+			  
 			</div>
 		</div>
 	</nav>
@@ -82,14 +98,14 @@ border-radius: 15px;
             <div class="col-md-9">
                 <!-- 酷狗音乐 -->
                 <div>
-     				<h1>人人视频真实地址解析</h1>
+     				<h1>酷狗音乐真实地址解析</h1>
                     <div class="bs-callout bs-callout-info" id="callout-badges-ie8-empty">
                         <h4></h4>
-                        <p>输入你要解析的视频地址</p>
+                        <p>输入你要下载的音乐</p>
                         <form>
                             <div class="input-group">
-                                <input type="hidden" id="type" name="type" value="1">
-                                <input type="text" id="video-url" name="music" class="form-control" placeholder="视频地址">
+                                <input type="hidden" id="type" name="type" value="0">
+                                <input type="text" id="music" name="music" class="form-control" placeholder="音乐名">
                                 <span class="input-group-btn">
                                     <button class="layui-btn btn btn-default" onClick="submitAction();return false;">　<i class="glyphicon glyphicon-refresh"></i> 解析　</button>
                                 </span>
@@ -97,14 +113,12 @@ border-radius: 15px;
                         </form>
                     </div>
                 </div>
-                <div style="margin-top:30px;">
-                    
-                </div>
-
+                
+                <div style="margin-top:30px;"></div>
                 <div style="margin-top:50px;"></div>
-     <div class="panel panel-default" id="result">
-     		
-	 </div>
+                
+      		<!-- 结果显示区 -->
+     		<div class="panel panel-default" id="result"></div>
 
                 <!-- 法律 -->
                 <div>
@@ -143,16 +157,13 @@ border-radius: 15px;
     友情链接开放申请
     <a href="http://www.jsons.cn/">JSON工具</a>
     <a href="https://tool.lu/coderunner/">在线代码运行</a>
-     <h1>统计</h1>
+    <h1>统计</h1>
     已访问次数：
-    <!-- start http://count.knowsky.com -->
 <script src="http://count.knowsky.com/count1/count.asp?id=171948&sx=1&ys=32" language="JavaScript" charset="gb2312"></script>
-<!-- Powered by http://www.knowsky.com -->
-    <a href="https://tongji.baidu.com/" target="_blank">百度统计</a>
 </div>
- </div>
+</div>
 
-			<!-- 右侧捐助码 -->
+		<!-- 右侧捐助码 -->
             <div class="col-md-3">
                 <div class="panel panel-success">
                     <div class="panel-heading">微信捐助二维码</div>
@@ -170,9 +181,8 @@ border-radius: 15px;
 <!--公告 -->
 <div class="panel panel-default">
      <div class="panel-heading">公告列表</div>
-           <ul id="announcement" class="list-group">
-
-          	</ul>
+          <ul id="announcement" class="list-group">
+          </ul>
 </div>
 
  <div class="panel panel-default">
@@ -284,22 +294,22 @@ border-radius: 15px;
     </div>
     
     <script type="text/javascript">
-    
     $(function(){
-    	
     	//如果是手机则不显示蜂巢特效
     	if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
     	} else {
     		<!-- 蜂巢特效 -->
     	    $("body").append('<script color="0,0,255" opacity="0.7" zIndex="-2" count="99" src="/js/beehive.js"><//script>')
     	}
-   	 $.get("/announcement",function(data){
-   		 var d = data.data;
-   		 d.forEach(function(item,index){
-   			 $("#announcement").append('<li class="list-group-item"><a href="#">'+item.title+'</a></li>');
-   		 });
-   	 });
-   });
+    	
+    	
+    	 $.get("/announcement",function(data){
+    		 var d = data.data;
+    		 d.forEach(function(item,index){
+    			 $("#announcement").append('<li class="list-group-item"><a href="#">'+item.title+'</a></li>');
+    		 });
+    	 });
+    });
     
     
     function toMessage(){
@@ -309,9 +319,6 @@ border-radius: 15px;
     		alert("请先登录QQ");
     	}
     }
-
     </script>
-    
-    
 </body>
 </html>
