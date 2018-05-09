@@ -318,6 +318,30 @@ border-radius: 15px;
     		alert("请先登录QQ");
     	}
     }
+    
+    
+    function submitAction(){
+    	var type = $("#type").val();
+    	var music = $("#music").val();
+    	 $.ajax({
+   	    	type: 'POST',
+   	    	url : '/music/seach',
+   	    	data: {"type":type,"music":music},
+   			dataType: 'json',
+   			success:function(data){
+   				var d = data.data;
+   				if(data.success){
+   				  console.info(d);
+   				  $('#result').text('');
+   				  $("#result").append('<div class="panel-heading">歌曲列表,点击即可下载</div><ul class="list-group" id="result-music"></ul>');
+   				  d.forEach(function(item, index) {
+   					  var li = "<li class='list-group-item'><a href="+item.download+" download="+ item.songname+">"+item.singername+"--"+item.songname +"</a></li>";
+   					  $('#result-music').append(li);
+                   });
+   				}
+   			}
+    	});
+    }
     </script>
 </body>
 </html>

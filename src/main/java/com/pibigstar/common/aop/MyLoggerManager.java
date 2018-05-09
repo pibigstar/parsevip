@@ -25,7 +25,7 @@ public class MyLoggerManager {
 	@Before("within(com.pibigstar..*) && @annotation(myLogger)")
 	public void printBeforeLog(MyLogger myLogger) {
 		String host = IPUtil.getIPAddr(request);
-		log.info("========"+host+":开始执行:"+myLogger.description()+"=======");
+		log.info("====IP:"+host+":开始执行:"+myLogger.description()+"=======");
 	}
 	//方法结束后
 	@After("within(com.pibigstar..*) && @annotation(myLogger)")
