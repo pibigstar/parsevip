@@ -1,13 +1,12 @@
-##################开发环境################
+######################上线环境################
 
 ###########spring配置##########
 server:
-  port: 8082
-
+  port: 8080
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://139.199.64.253:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
     data-username: root
     data-password: 123456
   jpa:
@@ -23,8 +22,6 @@ spring:
 
   thymeleaf:
     cache: false #开启模板热部署
-
-      
     
 
 #########################自定义配置#################################
@@ -42,13 +39,6 @@ parsevip:
   install:
     src: http://p8b1ddiwd.bkt.clouddn.com/resources/插件安装包.zip
   # QQ登录配置
-  QQLogin: 
-    appId: 应用的appId
-    redirecturi: 回调地址
-
-admin:
-  name: VIP资源解析 # 后台名字
-  address: admin #后台前缀
-  defaultImg: images/face.jpg #默认头像
-  author: java_派大星 #开发作者
-
+  QQLogin:
+    appId: 101472011
+    redirecturi: http://mxspvip.cn/index

@@ -18,6 +18,8 @@ public enum ExceptionMsg {
     UserNameLengthLimit("0016","用户名长度超限"),
     LoginNameNotExists("0017","该用户未注册"),
     UserNameSame("0018","新用户名与原用户名一致"),
+    CodeError("0019", "验证码错误！"),
+    ADDUSERERROR("0020", "添加用户失败！"),
 	
     NOPARSETYPE("0021","该网站暂时不支持解析"),
     URLNOTNULL("0022","URL不能为空"),

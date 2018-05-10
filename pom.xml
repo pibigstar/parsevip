@@ -11,11 +11,12 @@
 	<name>parsevip</name>
 	<description>vip资源解析</description>
 
+	<!--springboot父级 -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.1.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath />
 	</parent>
 
 	<properties>
@@ -51,10 +52,17 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- 健康监控 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<!--安全性检查 <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-security</artifactId> 
+			</dependency> -->
 
 
 		<!-- parsevip -->
-		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
@@ -82,7 +90,6 @@
 			<version>1.11.2</version>
 		</dependency>
 
-
 	</dependencies>
 
 	<build>
@@ -93,6 +100,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>
