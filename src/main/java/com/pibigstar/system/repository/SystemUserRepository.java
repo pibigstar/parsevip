@@ -13,4 +13,6 @@ public interface SystemUserRepository extends JpaRepository<SystemUser, Long>{
 	//public SystemUser findSystemUser(@Param("username")String username,@Param("password")String password);
 	
 	public SystemUser findByUsernameAndPassword(String username,String password);
+	
+	public SystemUser findByUsername(String username);
 }

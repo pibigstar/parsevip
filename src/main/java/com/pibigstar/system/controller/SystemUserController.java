@@ -6,7 +6,10 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pibigstar.domain.result.ExceptionMsg;
@@ -46,16 +49,49 @@ public class SystemUserController extends SystemBaseController{
 		return success(users);
 	}
 	
-	@RequestMapping("user/add")
+	@RequestMapping(value = "user/add",method=RequestMethod.POST)
 	public MyResponse add(SystemUser user) {
 		try {
 			systemUserRepository.save(user);
 			return success("添加成功！");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return error(ExceptionMsg.ADDUSERERROR);
+			return error(ExceptionMsg.ADDERROR);
 		}
 		
+	}
+	@RequestMapping(value = "user/{id}",method=RequestMethod.DELETE)
+	public MyResponse delete(@PathVariable Long id) {
+		try {
+			systemUserRepository.deleteById(id);
+			return success("删除成功！");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return error(ExceptionMsg.DELETEERROR);
+		}
+		
+	}
+	@RequestMapping(value = "user/{id}",method=RequestMethod.PUT)
+	public MyResponse update(@PathVariable Long id,@ModelAttribute SystemUser user) {
+		try {
+			systemUserRepository.saveAndFlush(user);
+			return success("更新成功！");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return error(ExceptionMsg.UPDATERROR);
+		}
+	}
+	
+	@RequestMapping(value = "user/{id}",method=RequestMethod.GET)
+	public String get(@PathVariable Long id) {
+		try {
+			SystemUser user = systemUserRepository.getOne(id);
+			request.setAttribute("userInfo", user);
+			return adminAdress+"/user/userInfo";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "exception";
+		}
 	}
 
 }

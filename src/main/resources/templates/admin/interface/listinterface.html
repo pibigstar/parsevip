@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>用户列表</title>
+	<title>接口列表</title>
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -21,7 +21,7 @@
 		    <a class="layui-btn search_btn">查询</a>
 		</div>
 		<div class="layui-inline">
-			<a class="layui-btn layui-btn-normal usersAdd_btn">添加用户</a>
+			<a class="layui-btn layui-btn-normal usersAdd_btn">添加接口</a>
 		</div>
 		<div class="layui-inline">
 			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
@@ -47,14 +47,9 @@
 				<tr>
 					<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>
 					<th>ID</th> 
-					<th>登录名</th> 
-					<th>邮箱</th>
-					<th>性别</th>
-					<th>手机号</th>
-					<th>年龄</th>
-					<th>角色</th>
-					<th>是否激活</th>
-					<th>最后登录时间</th>
+					<th>接口名</th> 
+					<th>接口URL</th>
+					<th>加入时间</th>
 					<th>操作</th>
 				</tr> 
 		    </thead>
@@ -94,7 +89,7 @@ layui.config({
 						success : function(d){
 							if(d.success){
 								myDatas = d.data;
-								usersList(myDatas);
+								parseDate(myDatas);
 							}else{
 								layer.msg("查询失败",{icon:5});
 							}
@@ -112,7 +107,7 @@ layui.config({
 		//添加会员
 		$(".usersAdd_btn").click(function(){
 			var index = layui.layer.open({
-				title : "添加",
+				title : "添加用户",
 				type : 2,
 				content : "toAddUser",
 				success : function(layero, index){
@@ -143,7 +138,7 @@ layui.config({
 		            		for(var i=0;i<myDatas.length;i++){
 								if(myDatas[i].newsId == $checked.eq(j).parents("tr").find(".news_del").attr("data-id")){
 									myDatas.splice(i,1);
-									usersList(myDatas);
+									parseDate(myDatas);
 								}
 							}
 		            	}
@@ -154,7 +149,7 @@ layui.config({
 		            },2000);
 		        })
 			}else{
-				layer.msg("请选择需要删除的选项");
+				layer.msg("请选择需要删除的文章");
 			}
 		})
 
@@ -167,7 +162,7 @@ layui.config({
 			form.render('checkbox');
 		});
 
-		//通过判断是否全部选中来确定全选按钮是否选中
+		//通过判断文章是否全部选中来确定全选按钮是否选中
 		form.on("checkbox(choose)",function(data){
 			var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]:not([name="show"])');
 			var childChecked = $(data.elem).parents('table').find('tbody input[type="checkbox"]:not([name="show"]):checked')
@@ -179,44 +174,22 @@ layui.config({
 			form.render('checkbox');
 		})
 
-		//操作
-		
+		/*操作 **/
 		//编辑
-		$("body").on("click",".btn_edit",function(){  
-			var _this = $(this);
-			for(var i=0;i<myDatas.length;i++){
-				if(myDatas[i].id == $.trim(_this.attr("data-id"))){
-					var index = layui.layer.open({
-						title : "编辑",
-						type : 2,
-						content : myDatas[i].id,
-						success : function(layero, index){
-							setTimeout(function(){
-								layui.layer.tips('点击此处返回接口列表', '.layui-layer-setwin .layui-layer-close', {
-									tips: 3
-								});
-							},500)
-						}
-					})
-				}
-			}
-			//改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
-			$(window).resize(function(){
-				layui.layer.full(index);
-			})
-			layui.layer.full(index);
-		});
+		$("body").on("click",".users_edit",function(){ 
+			layer.alert('您点击了会员编辑按钮，由于是纯静态页面，所以暂时不存在编辑内容，后期会添加，敬请谅解。。。',{icon:6, title:'文章编辑'});
+		})
 
-		//单选删除
+		//删除
 		$("body").on("click",".btn_del",function(){  
 			var _this = $(this);
 			layer.confirm('确定删除？',{icon:3, title:'提示信息'},function(index){
+				//_this.parents("tr").remove();
 				for(var i=0;i<myDatas.length;i++){
-					if(myDatas[i].id == _this.attr("data-id")){
-						console.info(myDatas[i].id);
+					if(myDatas[i].id == $.trim(_this.attr("data-id"))){
 						$.ajax({
 							type:"delete",
-							url:myDatas[i].id,
+							url:"user/"+myDatas[i].id,
 							dataType:"json",
 							success:function(d){
 								if(d.success){
@@ -229,25 +202,24 @@ layui.config({
 				}
 				layer.close(index);
 			});
-		});
+		})
 
-		
-		
+		//得到全部数据
 		function getList(){
 			$.ajax({
-				url : "/admin/user/list",
+				url : "/admin/interface/list",
 				type : "get",
 				dataType : "json",
 				success : function(d){
 					//更新数据
 					//renderDate(d.data);
 					myDatas = d.data;
-					usersList();
+					parseDate();
 				}
 			});
 		}
 		
-		function usersList(){
+		function parseDate(){
 			//渲染数据
 			function renderDate(data,curr){
 				var dataHtml = '';
@@ -262,21 +234,12 @@ layui.config({
 						dataHtml += '<tr>'
 				    	+  '<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
 				    	+  '<td>'+currData[i].id+'</td>'
-				    	+  '<td>'+currData[i].username+'</td>'
-				    	+  '<td>'+currData[i].email+'</td>'
-				    	+  '<td>'+currData[i].sex+'</td>'
-				    	+  '<td>'+currData[i].phone+'</td>'
-				    	+  '<td>'+currData[i].age+'</td>'
-						+  '<td>'+role+'</td>';
-						if(currData[i].state=="0"||currData[i].state==null){
-							dataHtml+='<td>未激活</td>';
-						}else{
-							dataHtml+='<td>已激活</td>';
-						}
-						dataHtml+='<td>'+currData[i].lastTime+'</td>'
+				    	+  '<td>'+currData[i].interfaceName+'</td>'
+				    	+  '<td>'+currData[i].interfaceUrl+'</td>'
+						+  '<td>'+currData[i].lastTime+'</td>'
 				    	+  '<td>'
-						+    '<a class="layui-btn layui-btn-mini btn_edit data-id="'+data[i].id+'" ><i class="iconfont icon-edit">&#xe640;</i> 编辑</a>'
-						+    '<a class="layui-btn layui-btn-danger layui-btn-mini btn_del" data-id="'+data[i].id+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
+						+    '<a class="layui-btn layui-btn-mini users_edit"><i class="iconfont icon-edit"></i> 编辑</a>'
+						+    '<a class="layui-btn layui-btn-danger layui-btn-mini btn_del" data-id="'+data[i].usersId+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
 				        +  '</td>'
 				    	+'</tr>';
 					}
