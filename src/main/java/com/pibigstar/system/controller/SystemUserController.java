@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.pibigstar.domain.result.ExceptionMsg;
 import com.pibigstar.domain.result.MyResponse;
@@ -25,7 +26,6 @@ public class SystemUserController extends SystemBaseController{
 	private SystemUserService systemUserService;
 	@Autowired
 	private SystemUserRepository systemUserRepository;
-	
 	
 	
 	@RequestMapping("user/login")
@@ -83,14 +83,17 @@ public class SystemUserController extends SystemBaseController{
 	}
 	
 	@RequestMapping(value = "user/{id}",method=RequestMethod.GET)
-	public String get(@PathVariable Long id) {
+	public ModelAndView getUserInfo(@PathVariable Long id) {
+		ModelAndView mv = new ModelAndView();
 		try {
+			mv.setViewName(adminAdress+"/user/userInfo");
 			SystemUser user = systemUserRepository.getOne(id);
-			request.setAttribute("userInfo", user);
-			return adminAdress+"/user/userInfo";
+			mv.addObject("userInfo", user);
+			return mv;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "exception";
+			mv.setViewName("exception");
+			return mv;
 		}
 	}
 

@@ -8,29 +8,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.pibigstar.domain.result.ExceptionMsg;
 import com.pibigstar.domain.result.MyResponse;
-import com.pibigstar.system.domain.SystemInterface;
-import com.pibigstar.system.repository.SystemInterfaceRepository;
+import com.pibigstar.system.domain.SystemFriendLink;
+import com.pibigstar.system.repository.SystemFriendLinkRepository;
 
 @RestController
-public class SystemInterfaceController extends SystemBaseController{
+public class SystemFriendLinkController extends SystemBaseController{
+
 	
 	@Autowired
-	private SystemInterfaceRepository systemInterfaceRepository;
-	
-	@RequestMapping(value="interface/list",method=RequestMethod.GET)
+	private SystemFriendLinkRepository systemFriendLinkRepository;
+
+	@RequestMapping(value="link/list",method=RequestMethod.GET)
 	public MyResponse list() {
-		List<SystemInterface> interfaces = systemInterfaceRepository.findAll();
-		return success(interfaces);
+		List<SystemFriendLink> links = systemFriendLinkRepository.findAll();
+		return success(links);
 	}
 	
 	
-	@RequestMapping(value = "interface/add",method=RequestMethod.POST)
-	public MyResponse add(SystemInterface inter) {
+	@RequestMapping(value = "link/add",method=RequestMethod.POST)
+	public MyResponse add(SystemFriendLink link) {
 		try {
-			systemInterfaceRepository.save(inter);
+			systemFriendLinkRepository.save(link);
 			return success("添加成功！");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -40,10 +40,10 @@ public class SystemInterfaceController extends SystemBaseController{
 	}
 	
 	
-	@RequestMapping(value="interface/{id}",method=RequestMethod.DELETE)
+	@RequestMapping(value="link/{id}",method=RequestMethod.DELETE)
 	public MyResponse delete(@PathVariable Long id) {
 		try {
-			systemInterfaceRepository.deleteById(id);
+			systemFriendLinkRepository.deleteById(id);
 			return success("删除成功！");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -51,10 +51,10 @@ public class SystemInterfaceController extends SystemBaseController{
 		}
 	}
 	
-	@RequestMapping(value="interface/{id}",method=RequestMethod.PUT)
-	public MyResponse update(SystemInterface inter) {
+	@RequestMapping(value="link/{id}",method=RequestMethod.PUT)
+	public MyResponse update(SystemFriendLink link) {
 		try {
-			systemInterfaceRepository.save(inter);
+			systemFriendLinkRepository.save(link);
 			return success("更新成功！");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,23 +62,23 @@ public class SystemInterfaceController extends SystemBaseController{
 		}
 	}
 	
-	@RequestMapping(value="interface/get/{id}",method=RequestMethod.GET)
+	@RequestMapping(value="link/get/{id}",method=RequestMethod.GET)
 	public MyResponse get(@PathVariable Long id) {
 		try {
-			SystemInterface inter = systemInterfaceRepository.getOne(id);
-			return success("查询成功！",inter);
+			SystemFriendLink link = systemFriendLinkRepository.getOne(id);
+			return success("查询成功！",link);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return error(ExceptionMsg.GETERROR);
 		}
 	}
-	@RequestMapping(value="interface/{id}",method=RequestMethod.GET)
+	@RequestMapping(value="link/{id}",method=RequestMethod.GET)
 	public ModelAndView getUserInfo(@PathVariable Long id) {
 		ModelAndView mv = new ModelAndView();
 		try {
-			SystemInterface inter = systemInterfaceRepository.getOne(id);
-			mv.setViewName(adminAdress+"/interface/interfaceInfo");
-			mv.addObject("interInfo",inter);
+			SystemFriendLink link = systemFriendLinkRepository.getOne(id);
+			mv.setViewName(adminAdress+"/link/linkInfo");
+			mv.addObject("link",link);
 			return mv;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -87,5 +87,4 @@ public class SystemInterfaceController extends SystemBaseController{
 		}
 	}
 	
-
 }

@@ -9,17 +9,19 @@ import javax.persistence.Id;
 public class Announcement {
 	@GeneratedValue
 	@Id
-	private Integer id;
+	private Long id;
 	@Column(nullable = false, unique = true)
 	private String title;
 	@Column(nullable = true)
 	private String content;
+	@Column(nullable=true)
+	private String createTime;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -38,5 +40,15 @@ public class Announcement {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	public String getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+
+	
 	
 }

@@ -20,21 +20,21 @@
 <body class="childrenBody">
 	<form class="layui-form" style="width:80%;">
 		<div class="layui-form-item">
-			<label class="layui-form-label">接口名</label>
+			<label class="layui-form-label">友链名</label>
 			<div class="layui-input-block">
-				<input name="interfaceName" class="layui-input" lay-verify="required" placeholder="请输入接口名">
+				<input name="name" class="layui-input" lay-verify="required" placeholder="请输入标题">
 			</div>
 		</div>
 		<div class="layui-form-item">
-			<label class="layui-form-label">接口地址</label>
+			<label class="layui-form-label">友链地址</label>
 			<div class="layui-input-block">
-				<input name="interfaceUrl" class="layui-input password" lay-verify="required" placeholder="请输入接口地址">
+				<textarea name="url" placeholder="请输入内容" class="layui-textarea myself"></textarea>
 			</div>
 		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label">添加日期</label>
 			<div class="layui-input-block">
-				<input name="createTime" id="createTime" type="datetime" class="layui-input createTime">
+				<input name="lastTime" id="lastTime" type="datetime" class="layui-input lastTime">
 			</div>
 		</div>
 		<div class="layui-form-item">
@@ -56,7 +56,7 @@
 			$ = layui.jquery,
 			laydate = layui.laydate;
 			
-		$("#createTime").val(formatTime(new Date()));
+		$("#lastTime").val(formatTime(new Date()));
 		//提交添加用户表单
 	 	form.on("submit(addInfo)",function(data){
 	 		//弹出loading

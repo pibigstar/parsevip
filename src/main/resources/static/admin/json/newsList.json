@@ -1,7 +1,7 @@
 [{
     "newsId" : "1",
     "newsName" : "css3用transition实现边框动画效果",
-    "newsAuthor" : "请叫我马哥",
+    "newsAuthor" : "派大星",
     "newsStatus" : "审核通过",
     "newsLook" : "开放浏览",
     "isShow" : "",
@@ -9,7 +9,7 @@
 },{
     "newsId" : "2",
     "newsName" : "自定义的模块名称可以包含/吗",
-    "newsAuthor" : "请叫我马哥",
+    "newsAuthor" : "派大星",
     "newsStatus" : "待审核",
     "newsLook" : "开放浏览",
     "isShow" : "checked",
@@ -33,7 +33,7 @@
 },{
     "newsId" : "5",
     "newsName" : "表单元素长度应该怎么调整才美观",
-    "newsAuthor" : "请叫我马哥",
+    "newsAuthor" : "派大星",
     "newsStatus" : "待审核",
     "newsLook" : "开放浏览",
     "isShow" : "checked",
@@ -49,7 +49,7 @@
 },{
     "newsId" : "7",
     "newsName" : "微信页面中富文本编辑器LayEdit无法使用",
-    "newsAuthor" : "请叫我马哥",
+    "newsAuthor" : "派大星",
     "newsStatus" : "待审核",
     "newsLook" : "开放浏览",
     "isShow" : "",
@@ -57,7 +57,7 @@
 },{
     "newsId" : "8",
     "newsName" : "layui 什么时候发布新的版本呀",
-    "newsAuthor" : "请叫我马哥",
+    "newsAuthor" : "派大星",
     "newsStatus" : "审核通过",
     "newsLook" : "开放浏览",
     "isShow" : "checked",
@@ -81,7 +81,7 @@
 },{
     "newsId" : "11",
     "newsName" : "layui form表单提交成功如何拿取返回值",
-    "newsAuthor" : "请叫我马哥",
+    "newsAuthor" : "派大星",
     "newsStatus" : "审核通过",
     "newsLook" : "开放浏览",
     "isShow" : "checked",
@@ -89,7 +89,7 @@
 },{
     "newsId" : "12",
     "newsName" : "layer mobileV2.0 yes回调函数无法用？",
-    "newsAuthor" : "请叫我马哥",
+    "newsAuthor" : "派大星",
     "newsStatus" : "待审核",
     "newsLook" : "开放浏览",
     "isShow" : "checked",
@@ -105,7 +105,7 @@
 },{
     "newsId" : "14",
     "newsName" : "被编辑器 layedit 图片上传搞崩溃了",
-    "newsAuthor" : "请叫我马哥",
+    "newsAuthor" : "派大星",
     "newsStatus" : "审核通过",
     "newsLook" : "开放浏览",
     "isShow" : "checked",
@@ -113,7 +113,7 @@
 },{
     "newsId" : "15",
     "newsName" : "element.tabChange()方法运行了，但是页面并没有产生效果",
-    "newsAuthor" : "请叫我马哥",
+    "newsAuthor" : "派大星",
     "newsStatus" : "审核通过",
     "newsLook" : "开放浏览",
     "isShow" : "checked",
@@ -129,7 +129,7 @@
 },{
     "newsId" : "17",
     "newsName" : "时间控件怎么取消默认的淡入淡出效果。。。",
-    "newsAuthor" : "请叫我马哥",
+    "newsAuthor" : "派大星",
     "newsStatus" : "审核通过",
     "newsLook" : "开放浏览",
     "isShow" : "checked",
@@ -161,7 +161,7 @@
 },{
     "newsId" : "21",
     "newsName" : "layer 为什么可以单引入css",
-    "newsAuthor" : "请叫我马哥",
+    "newsAuthor" : "派大星",
     "newsStatus" : "审核通过",
     "newsLook" : "开放浏览",
     "isShow" : "checked",
@@ -169,7 +169,7 @@
 },{
     "newsId" : "22",
     "newsName" : "进度条的lay-percent=''是通过ajax动态加载的 可是在页面上无效果",
-    "newsAuthor" : "请叫我马哥",
+    "newsAuthor" : "派大星",
     "newsStatus" : "待审核",
     "newsLook" : "开放浏览",
     "isShow" : "checked",
@@ -185,7 +185,7 @@
 },{
     "newsId" : "24",
     "newsName" : "模块化城市三级联动！模块化加载",
-    "newsAuthor" : "请叫我马哥",
+    "newsAuthor" : "派大星",
     "newsStatus" : "审核通过",
     "newsLook" : "开放浏览",
     "isShow" : "checked",
@@ -201,7 +201,7 @@
 },{
     "newsId" : "26",
     "newsName" : "关于load 弹出显示文字的问题【严重】",
-    "newsAuthor" : "请叫我马哥",
+    "newsAuthor" : "派大星",
     "newsStatus" : "审核通过",
     "newsLook" : "开放浏览",
     "isShow" : "checked",
@@ -217,7 +217,7 @@
 },{
     "newsId" : "28",
     "newsName" : "layui：表单radio和checkbox怎么做必须校验",
-    "newsAuthor" : "请叫我马哥",
+    "newsAuthor" : "派大星",
     "newsStatus" : "审核通过",
     "newsLook" : "开放浏览",
     "isShow" : "checked",
@@ -225,7 +225,7 @@
 },{
     "newsId" : "29",
     "newsName" : "关于layui官网页面代码里面的site样式表",
-    "newsAuthor" : "请叫我马哥",
+    "newsAuthor" : "派大星",
     "newsStatus" : "待审核",
     "newsLook" : "开放浏览",
     "isShow" : "checked",

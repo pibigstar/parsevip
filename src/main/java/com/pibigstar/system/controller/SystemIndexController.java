@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.pibigstar.domain.result.ExceptionMsg;
 import com.pibigstar.domain.result.MyResponse;
@@ -23,7 +24,7 @@ public class SystemIndexController extends SystemBaseController{
 	private SystemUserRepository systemUserRepository;
 	
 	
-	@RequestMapping(value = {"toLogin","/"})
+	@RequestMapping(value = {"toLogin",""})
 	public String toLogin() {
 		return adminAdress+"/login/login";
 	}
@@ -46,25 +47,10 @@ public class SystemIndexController extends SystemBaseController{
 	public String toUserManager() {
 		return adminAdress+"/user/listUser";
 	}
-	@RequestMapping("user/toAddUser")
+	@RequestMapping("user/toAdd")
 	public String toUserAdd() {
 		return adminAdress+"/user/addUser";
 	}
-	
-	@RequestMapping(value = "user/{id}",method=RequestMethod.GET)
-	public String get(@PathVariable Long id) {
-		try {
-			SystemUser user = systemUserRepository.getOne(id);
-			request.setAttribute("userInfo", user);
-			return adminAdress+"/user/userInfo";
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "exception";
-		}
-		
-	}
-	
-	
 	
 	/**
 	 * 接口界面
@@ -74,9 +60,44 @@ public class SystemIndexController extends SystemBaseController{
 	public String toInterface() {
 		return adminAdress+"/interface/listinterface";
 	}
-	@RequestMapping("interface/toAddInterface")
+	@RequestMapping("interface/toAdd")
 	public String toAddInterface() {
 		return adminAdress+"/interface/addInterface";
+	}
+	
+	/**
+	 * 公告页面
+	 * @return
+	 */
+	@RequestMapping("announce/toAnnounce")
+	public String toAnnounce() {
+		return adminAdress+"/announce/listAnnounce";
+	}
+	
+	@RequestMapping("announce/toAdd")
+	public String toAddAnnounce() {
+		return adminAdress+"/announce/addAnnounce";
+	}
+	/**
+	 * 友情链接
+	 */
+	@RequestMapping("link/toList")
+	public String toLink() {
+		return adminAdress+"/link/listLink";
+	}
+	
+	@RequestMapping("link/toAdd")
+	public String toAddLink() {
+		return adminAdress+"/link/addLink";
+	}
+	
+	
+	/**
+	 * 系统页面
+	 */
+	@RequestMapping(value="system/404")
+	public String to404() {
+		return "/error/404";
 	}
 
 }

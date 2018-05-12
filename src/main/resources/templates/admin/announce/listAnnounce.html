@@ -21,7 +21,7 @@
 		    <a class="layui-btn search_btn">查询</a>
 		</div>
 		<div class="layui-inline">
-			<a class="layui-btn layui-btn-normal btn_add">添加接口</a>
+			<a class="layui-btn layui-btn-normal btn_add">添加公告</a>
 		</div>
 		<div class="layui-inline">
 			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
@@ -221,7 +221,7 @@ layui.config({
 		//得到全部数据
 		function getList(){
 			$.ajax({
-				url : "/admin/interface/list",
+				url : "list",
 				type : "get",
 				dataType : "json",
 				success : function(d){
@@ -249,8 +249,8 @@ layui.config({
 						dataHtml += '<tr>'
 				    	+  '<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
 				    	+  '<td>'+currData[i].id+'</td>'
-				    	+  '<td>'+currData[i].interfaceName+'</td>'
-				    	+  '<td>'+currData[i].interfaceUrl+'</td>'
+				    	+  '<td>'+currData[i].title+'</td>'
+				    	+  '<td>'+currData[i].content+'</td>'
 						+  '<td>'+currData[i].createTime+'</td>'
 				    	+  '<td>'
 						+    '<a class="layui-btn layui-btn-mini btn_edit" data-id="'+currData[i].id+'"><i class="iconfont icon-edit">&#xe640;</i> 编辑</a>'

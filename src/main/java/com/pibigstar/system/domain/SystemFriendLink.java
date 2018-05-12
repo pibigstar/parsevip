@@ -1,26 +1,20 @@
 package com.pibigstar.system.domain;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-/**
- * 接口
- * @author pibigstar
- *
- */
 @Entity
-public class SystemInterface {
+public class SystemFriendLink {
+
 	@Id
 	@GeneratedValue
 	private Long id;
 	@Column(nullable=false,unique=true)
-	private String interfaceName;
-	@Column(nullable=false)
-	private String interfaceUrl;
+	private String name;
+	@Column(nullable=true)
+	private String url;
 	@Column(nullable=true)
 	private String createTime;
 	public Long getId() {
@@ -29,17 +23,17 @@ public class SystemInterface {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getInterfaceName() {
-		return interfaceName;
+	public String getName() {
+		return name;
 	}
-	public void setInterfaceName(String interfaceName) {
-		this.interfaceName = interfaceName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getInterfaceUrl() {
-		return interfaceUrl;
+	public String getUrl() {
+		return url;
 	}
-	public void setInterfaceUrl(String interfaceUrl) {
-		this.interfaceUrl = interfaceUrl;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	public String getCreateTime() {
 		return createTime;
@@ -49,5 +43,4 @@ public class SystemInterface {
 	}
 	
 	
-
 }

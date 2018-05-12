@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>添加接口 </title>
+	<title>接口信息 </title>
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -22,50 +22,51 @@
 		<div class="layui-form-item">
 			<label class="layui-form-label">接口名</label>
 			<div class="layui-input-block">
-				<input name="interfaceName" class="layui-input" lay-verify="required" placeholder="请输入接口名">
+				<input name="id" type="hidden" th:value="${interInfo.id}">
+				<input name="interfaceName" th:value="${interInfo.interfaceName}"  class="layui-input" lay-verify="required" placeholder="请输入接口名">
 			</div>
 		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label">接口地址</label>
 			<div class="layui-input-block">
-				<input name="interfaceUrl" class="layui-input password" lay-verify="required" placeholder="请输入接口地址">
+				<input name="interfaceUrl" th:value="${interInfo.interfaceUrl}"  class="layui-input password" lay-verify="required" placeholder="请输入接口地址">
 			</div>
 		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label">添加日期</label>
 			<div class="layui-input-block">
-				<input name="createTime" id="createTime" type="datetime" class="layui-input createTime">
+				<input name="createTime" th:value="${interInfo.createTime}"  class="layui-input password" >
 			</div>
 		</div>
 		<div class="layui-form-item">
 			<div class="layui-input-block">
-				<button class="layui-btn" lay-submit="" lay-filter="addInfo">立即提交</button>
+				<button class="layui-btn" lay-submit="" lay-filter="changeInfo">立即提交</button>
 				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 		    </div>
 		</div>
 	</form>
 	<script type="text/javascript" src="/admin/layui/layui.js"></script>
 	<script type="text/javascript">
+	
 	var $;
 	layui.config({
 		base : "js/"
-	}).use(['form','layer','jquery',"laydate"],function(){
+	}).use(['form','layer','jquery'],function(){
 		var form = layui.form(),
 			layer = parent.layer === undefined ? layui.layer : parent.layer,
-			laypage = layui.laypage,
-			$ = layui.jquery,
-			laydate = layui.laydate;
-			
-		$("#createTime").val(formatTime(new Date()));
-		//提交添加用户表单
-	 	form.on("submit(addInfo)",function(data){
+			laypage = layui.laypage;
+			$ = layui.jquery;
+
+		//提交修改表单
+	 	form.on("submit(changeInfo)",function(data){
 	 		//弹出loading
+	 		var id = $("#id").val();
 	 		var index = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
 	        setTimeout(function(){
 	            top.layer.close(index);
 	        	$.ajax({
-	        		url : "add",
-	        		type : "post",
+	        		url : id,
+	        		type : "put",
 	        		data : data.field,
 	        		dataType : "json",
 	        		success : function(d){

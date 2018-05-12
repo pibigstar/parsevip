@@ -3,9 +3,11 @@ package com.pibigstar.common.exception;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pibigstar.common.Constant;
@@ -50,6 +52,20 @@ public class GlobalExceptionHandler {
 	MyResponse handleBusinessException(BusinessException e) {
 		log.error(e.getMessage(),e);
 		return new MyResponse(e.getErrorCode(),e.getMessage());
+	}
+	
+	/**
+	 * 全局拦截
+	 * 配置404页面
+	 * @param e
+	 * @return
+	 */
+	@ResponseStatus(code=HttpStatus.NOT_FOUND)
+	ModelAndView handleNotFoundException(Exception e) {
+		log.error(e.getMessage(),e);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/error/404");
+		return mav;
 	}
 	
 	

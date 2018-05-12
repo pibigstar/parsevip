@@ -26,16 +26,9 @@
 				<div class="layui-form component">
 			        <select name="modules" lay-verify="required" lay-search="">
 						<option value="">直接选择或搜索选择</option>
-						<option value="1">layer</option>
-						<option value="2">form</option>
-						<option value="3">layim</option>
-						<option value="4">element</option>
-						<option value="5">laytpl</option>
-						<option value="6">upload</option>
-						<option value="7">laydate</option>
-						<option value="8">laypage</option>
-						<option value="9">flow</option>
-						<option value="10">util</option>
+						<option value="1">接口管理</option>
+						<option value="2">文档</option>
+						<option value="3">VIP资源</option>
 			        </select>
 			        <i class="layui-icon">&#xe615;</i>
 			    </div>
@@ -116,7 +109,7 @@
 						<cite>用户管理</cite></a>
 					</li>
 					<li class="layui-nav-item">
-						<a href="javascript:;" data-url="link.do?toLink">
+						<a href="javascript:;" data-url="link/toList">
 						<i class="layui-icon" data-icon=""></i>
 						<cite>友情链接</cite></a>
 					</li>
@@ -125,16 +118,16 @@
 						<cite>系统设置</cite><span class="layui-nav-more"></span></a>
 						<dl class="layui-nav-child">
 							<dd>
-							<a href="javascript:;" data-url="sysInfo.do?toSysInfo">
+							<a href="javascript:;" data-url="system/info">
 								<i class="layui-icon" data-icon=""></i>
 								<cite>系统基本参数</cite>
 							</a>
 							</dd>
-							<dd><a href="javascript:;" data-url="page/404.jsp">
+							<dd><a href="javascript:;" data-url="system/404">
 								<i class="layui-icon" data-icon=""></i>
 								<cite>404页面</cite></a>
 							</dd>
-							<dd><a href="javascript:;" data-url="/admin/notice/get">
+							<dd><a href="javascript:;" data-url="announce/toAnnounce">
 								<i class="layui-icon" data-icon=""></i>
 								<cite>系统公告</cite></a>
 							</dd>

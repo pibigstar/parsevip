@@ -26,7 +26,7 @@ layui.config({
     if(window.sessionStorage.getItem('userFace')){
     	$("#userFace").attr("src",window.sessionStorage.getItem('userFace'));
     }else{
-    	$("#userFace").attr("src","images/face.jpg");
+    	$("#userFace").attr("src","/admin/images/face.jpg");
     }
 
     //修改个人资料
