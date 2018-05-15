@@ -25,6 +25,8 @@ public enum ExceptionMsg {
     GETERROR("0032", "查询失败！"),
     DELETEERROR("0033", "删除失败！"),
     UPDATERROR("0034", "更新失败！"),
+    
+    NULLDATA("0050", "数据为空！"),
 	
     NOPARSETYPE("0021","该网站暂时不支持解析"),
     URLNOTNULL("0022","URL不能为空"),

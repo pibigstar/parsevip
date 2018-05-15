@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>系统基本参数</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="/admin/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="/admin/css/user.css" media="all" />
+</head>
+<body class="childrenBody">
+	<form class="layui-form">
+		<div class="user_left">
+			<div class="layui-form-item">
+			    <label class="layui-form-label">版本号</label>
+			    <div class="layui-input-block">
+			    	<input type="hidden" name="id" th:value="${systemInfo.id}">
+			    	<input type="text" name="edition" th:value="${systemInfo.systemEdition}" disabled class="layui-input layui-disabled">
+			    </div>
+			</div>
+			<div class="layui-form-item">
+			    <label class="layui-form-label">开发作者</label>
+			    <div class="layui-input-block">
+			    	<input name="author" type="text" th:value="${systemInfo.systemAuthor}" disabled class="layui-input layui-disabled">
+			    </div>
+			</div>
+			<div class="layui-form-item">
+			    <label class="layui-form-label">网站首页</label>
+			    <div class="layui-input-block">
+			    	<input type="text" th:value="${systemInfo.systemIndex}" disabled class="layui-input realName">
+			    </div>
+			</div>
+			<div class="layui-form-item">
+			    <label class="layui-form-label">服务器环境</label>
+			    <div class="layui-input-block">
+			    	<input type="text" name="environment" th:value="${systemInfo.systemEnvironment }" disabled class="layui-input userPhone">
+			    </div>
+			</div>
+
+			<div class="layui-form-item">
+			    <label class="layui-form-label">数据库版本</label>
+			    <div class="layui-input-block">
+			    	<input type="text" name="email" th:value="${systemInfo.systemDataBaseEdition }" disabled class="layui-input userEmail">
+			    </div>
+			</div>
+			<div class="layui-form-item">
+			    <label class="layui-form-label">最大上传限制</label>
+			    <div class="layui-input-block">
+			    	<input type="text" name="uploadSize" th:value="${systemInfo.systemUploadSize }" disabled class="layui-input userEmail">
+			    </div>
+			</div>
+			<div class="layui-form-item">
+			    <label class="layui-form-label">当前用户权限</label>
+			    <div class="layui-input-block">
+			    	<input type="text" name="email" value="总管理员" disabled class="layui-input userEmail">
+			    </div>
+			</div>
+		</div>
+	</form>
+	<script type="text/javascript" src="/admin/layui/layui.js"></script>
+</body>
+</html>

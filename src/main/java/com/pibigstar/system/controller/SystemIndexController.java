@@ -1,16 +1,9 @@
 package com.pibigstar.system.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.pibigstar.domain.result.ExceptionMsg;
-import com.pibigstar.domain.result.MyResponse;
-import com.pibigstar.system.domain.SystemUser;
-import com.pibigstar.system.repository.SystemUserRepository;
 
 /**
  * 页面跳转Controller
@@ -20,21 +13,17 @@ import com.pibigstar.system.repository.SystemUserRepository;
 @Controller
 public class SystemIndexController extends SystemBaseController{
 	
-	@Autowired
-	private SystemUserRepository systemUserRepository;
-	
-	
-	@RequestMapping(value = {"toLogin",""})
+	@RequestMapping(value = {"toLogin",""},method=RequestMethod.GET)
 	public String toLogin() {
 		return adminAdress+"/login/login";
 	}
 	
-	@RequestMapping("toIndex")
+	@RequestMapping(value="toIndex",method=RequestMethod.GET)
 	public String toIndex() {
 		setAttribute();
 		return adminAdress+"/index";
 	}
-	@RequestMapping("toMain")
+	@RequestMapping(value="toMain",method=RequestMethod.GET)
 	public String toMain() {
 		return adminAdress+"/index/main";
 	}
@@ -43,11 +32,11 @@ public class SystemIndexController extends SystemBaseController{
 	 * 用户界面
 	 * @return
 	 */
-	@RequestMapping("user/toList")
+	@RequestMapping(value="user/toList",method=RequestMethod.GET)
 	public String toUserManager() {
 		return adminAdress+"/user/listUser";
 	}
-	@RequestMapping("user/toAdd")
+	@RequestMapping(value="user/toAdd",method=RequestMethod.GET)
 	public String toUserAdd() {
 		return adminAdress+"/user/addUser";
 	}
@@ -56,11 +45,11 @@ public class SystemIndexController extends SystemBaseController{
 	 * 接口界面
 	 * @return
 	 */
-	@RequestMapping("interface/toList")
+	@RequestMapping(value="interface/toList",method=RequestMethod.GET)
 	public String toInterface() {
 		return adminAdress+"/interface/listinterface";
 	}
-	@RequestMapping("interface/toAdd")
+	@RequestMapping(value="interface/toAdd",method=RequestMethod.GET)
 	public String toAddInterface() {
 		return adminAdress+"/interface/addInterface";
 	}
@@ -69,24 +58,24 @@ public class SystemIndexController extends SystemBaseController{
 	 * 公告页面
 	 * @return
 	 */
-	@RequestMapping("announce/toAnnounce")
+	@RequestMapping(value="announce/toAnnounce",method=RequestMethod.GET)
 	public String toAnnounce() {
 		return adminAdress+"/announce/listAnnounce";
 	}
 	
-	@RequestMapping("announce/toAdd")
+	@RequestMapping(value="announce/toAdd",method=RequestMethod.GET)
 	public String toAddAnnounce() {
 		return adminAdress+"/announce/addAnnounce";
 	}
 	/**
 	 * 友情链接
 	 */
-	@RequestMapping("link/toList")
+	@RequestMapping(value="link/toList",method=RequestMethod.GET)
 	public String toLink() {
 		return adminAdress+"/link/listLink";
 	}
 	
-	@RequestMapping("link/toAdd")
+	@RequestMapping(value="link/toAdd",method=RequestMethod.GET)
 	public String toAddLink() {
 		return adminAdress+"/link/addLink";
 	}
@@ -95,7 +84,7 @@ public class SystemIndexController extends SystemBaseController{
 	/**
 	 * 系统页面
 	 */
-	@RequestMapping(value="system/404")
+	@RequestMapping(value="system/404",method=RequestMethod.GET)
 	public String to404() {
 		return "/error/404";
 	}
