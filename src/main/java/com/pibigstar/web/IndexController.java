@@ -1,10 +1,19 @@
 package com.pibigstar.web;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.pibigstar.system.domain.SystemInterface;
+import com.pibigstar.system.repository.SystemInterfaceRepository;
 
 @Controller
 public class IndexController extends BaseController{
+	@Autowired
+	private SystemInterfaceRepository systemInterfaceRepository;
 	
 	@RequestMapping("/")
 	public String toDefaultIndex() {
@@ -48,9 +57,13 @@ public class IndexController extends BaseController{
 	}
 	
 	@RequestMapping("/look")
-	public String toVideo() {
+	public ModelAndView toVideo() {
 		setProperties();
-		return "lookvideo";
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("lookvideo");
+		List<SystemInterface> interfaces = systemInterfaceRepository.findAll();
+		mv.addObject("interfaces",interfaces);
+		return mv;
 	}
 	@RequestMapping("/install")
 	public String toInstall() {

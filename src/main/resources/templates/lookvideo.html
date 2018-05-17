@@ -89,13 +89,7 @@ border-radius: 15px;
             <div class="col-md-3" style="margin-top: 8px;">
                 <div class="input-group" style="width: 100%;">
                     <select id="play_interface" class="form-control input-lg">
-                    	<option value="http://www.wmxz.wang/video.php?url="> 无名小站</option>
-						<option value="http://api.97kn.com/?url=')">1号接口</option>
-						<option value="http://jx.aeidu.cn/index405.php?url=">2号接口</option>
-						<option value="http://api.nepian.com/ckparse/?url=">3号接口</option>
-						<option value="http://api.51ckm.com/jx.php?url=">4号接口</option>
-						<option value="https://api.flvsp.com/?url=">5号接口</option>
-						<option value="http://jqaaa.com/jx.php?url=">6号接口</option>
+                    
                     </select>
                 </div>
             </div>
@@ -291,28 +285,44 @@ border-radius: 15px;
     $(function(){
     	//如果是手机则不显示蜂巢特效
     	if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    		//播放视频
+    	 	var play_interface = $("#play_interface");
+    	    $("#play").click(function(){
+    	        var inter = $("#play_interface option:selected").val();
+    	        $("#play_video").remove();
+    	        var url = $("#url").val();
+    	        var newUrl = inter + url;
+    	        $("<iframe id='play_video' height=300 width=200  src="+newUrl+"frameborder=0 'allowfullscreen'></iframe>").appendTo("#panel-video");
+    	    });
     	} else {
     		<!-- 蜂巢特效 -->
     	    $("body").append('<script color="0,0,255" opacity="0.7" zIndex="-2" count="99" src="/js/beehive.js"><//script>')
+    	    //播放视频
+    	 	var play_interface = $("#play_interface");
+    	    $("#play").click(function(){
+    	        var inter = $("#play_interface option:selected").val();
+    	        $("#play_video").remove();
+    	        var url = $("#url").val();
+    	        var newUrl = inter + url;
+    	        $("<iframe id='play_video' height=600 width=830  src="+newUrl+"frameborder=0 'allowfullscreen'></iframe>").appendTo("#panel-video");
+    	    });
     	}
+     
     	
+    //得到接口列表
+	$.get("/admin/interface/list",function(data){
+	   	var d = data.data;
+	    d.forEach(function(item,index){
+	    	$("#play_interface").append("<option value="+item.interfaceUrl+">"+item.interfaceName+"</option>");
+	    })
+	})
+     //得到公告列表
    	 $.get("/announcement",function(data){
    		 var d = data.data;
    		 d.forEach(function(item,index){
    			 $("#announcement").append('<li class="list-group-item"><a href="#">'+item.title+'</a></li>');
    		 });
    	 });
-   	 
-   	//播放视频
- 	var play_interface = $("#play_interface");
-    $("#play").click(function(){
-        var inter = $("#play_interface option:selected").val();
-        $("#play_video").remove();
-        var url = $("#url").val();
-        var newUrl = inter + url;
-        $("<iframe id='play_video' height=600 width=830  src="+newUrl+"frameborder=0 'allowfullscreen'></iframe>").appendTo("#panel-video");
-    });
-   	 
    });
     
     //播放
