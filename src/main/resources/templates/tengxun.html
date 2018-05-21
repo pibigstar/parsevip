@@ -300,6 +300,7 @@ border-radius: 15px;
    	 });
    });
     
+    
     function toMessage(){
     	if(QC.Login.check()){
     		window.location.href = "/message";
@@ -314,7 +315,7 @@ border-radius: 15px;
     	 $.ajax({
    	    	type: 'POST',
    	    	url : '/video/parse',
-   	    	data: {"url":videoUrl,"type":type},
+   	    	data: {"type":type,"url":videoUrl},
    			dataType: 'json',
    			success:function(data){
    				var d = data.data;
@@ -329,7 +330,7 @@ border-radius: 15px;
    				}
    			}
     	});
-    
+    }
     </script>
     
     

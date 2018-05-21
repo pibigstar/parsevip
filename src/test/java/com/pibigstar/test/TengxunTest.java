@@ -1,4 +1,5 @@
-package com.pibigstar.parsevip.video;
+package com.pibigstar.test;
+
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -22,7 +23,7 @@ import com.pibigstar.parsevip.bean.Video;
  * @author pibigstar
  *
  */
-public class TengXun {
+public class TengxunTest {
 	
 	private static String url = "https://v.qq.com/x/cover/i57sqefkulqgkb5.html"; //视频的地址
 	private static SAXReader reader = null;
@@ -127,4 +128,14 @@ public class TengXun {
 		return urls;
 	}
 	
+	public static void main(String[] args) {
+		String url = "https://v.qq.com/x/cover/ny49109w7z5kztm.html";
+		List<Video> videos = parse(url);
+		
+		for (Video video : videos) {
+			System.out.println(video.getUrl());
+		}
+	}
+	
 }
+

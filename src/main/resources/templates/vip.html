@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>莫惜VIP视频解析</title>
+<link rel="stylesheet" href="/css/DPlayer.min.css"/>
+<style type="text/css">
+body,html{background-color:#000;padding:0;margin:0;width:100%;height:100%;color:transparent;}
+</style>
+
+<!-- DPlayer -->
+<script src="/js/DPlayer.min.js"></script>
+<!-- jquery -->
+<script src="/js/jquery.js"></script>
+
+</head>
+<body style="overflow-y:hidden;">
+    <div class="example">
+        <div id="dplayer"></div>
+    </div>
+<input type="hidden" id="url" th:value="${videos}">
+<script>
+	var url = $("#url").val();
+   var dp = new DPlayer({
+    container: document.getElementById('dplayer'),
+	 autoplay: false,                           // 可选，自动播放视频，不支持移动浏览器
+    theme: '#FADFA3',                          // 可选，主题颜色，默认: #b7daff
+    loop: false,                               // 可选，循环播放音乐，默认：true
+    screenshot: true,						// 可选，启用截图功能，默认值：false
+	logo: 'images/logo.png',						//可选，在左上角展示一个 logo，
+    video: {
+        url: url
+    },
+});
+   
+</script>
+
+</body>
+</html>
