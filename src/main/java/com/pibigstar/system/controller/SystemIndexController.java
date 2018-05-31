@@ -88,5 +88,9 @@ public class SystemIndexController extends SystemBaseController{
 	public String to404() {
 		return "/error/404";
 	}
+	@RequestMapping(value="/403",method=RequestMethod.GET)
+	public String to403() {
+		return "/error/404";
+	}
 
 }

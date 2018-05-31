@@ -10,4 +10,6 @@ public interface SystemUserService {
 	
 	public List<SystemUser> listUser();
 	
+	public SystemUser findUserByUsername(String username);
+	
 }

@@ -14,7 +14,7 @@ public enum ExceptionMsg {
     UserNameUsed("0012","该登录名称已存在"),
     EmailNotRegister("0013","该邮箱地址未注册"), 
     LinkOutdated("0014","该链接已过期，请重新请求"),
-    PassWordError("0015","密码输入错误"),
+    PassWordError("0015","密码错误!"),
     UserNameLengthLimit("0016","用户名长度超限"),
     LoginNameNotExists("0017","该用户未注册"),
     UserNameSame("0018","新用户名与原用户名一致"),

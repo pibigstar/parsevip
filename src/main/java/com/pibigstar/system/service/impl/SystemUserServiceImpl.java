@@ -29,4 +29,10 @@ public class SystemUserServiceImpl implements SystemUserService{
 		return systemUserRepository.findAll();
 	}
 
+
+	@Override
+	public SystemUser findUserByUsername(String username) {
+		return systemUserRepository.findByUsername(username);
+	}
+
 }

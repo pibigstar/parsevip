@@ -1,13 +1,15 @@
 package com.pibigstar.system.domain;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class SystemUser {
@@ -46,10 +48,9 @@ public class SystemUser {
 	@Column(nullable=true)
     private String lastAddress;
 	
-    
-  //roleSet记得跟UserMapping里面表关联时字段名字相对应
-  	//private Set<Role> roleSet = new HashSet<Role>();
-	
+	@ManyToMany(fetch=FetchType.EAGER)//立即从数据库中进行加载数据;
+	@JoinTable(name="SystemUserRole",joinColumns= {@JoinColumn(name="userId")},inverseJoinColumns= {@JoinColumn(name="roleId")})
+  	private List<SystemRole> roleList;// 一个用户具有多个角色
 	
 	
 	public String getUsername() {
@@ -142,5 +143,13 @@ public class SystemUser {
 	public void setLastAddress(String lastAddress) {
 		this.lastAddress = lastAddress;
 	}
+	public List<SystemRole> getRoleList() {
+		return roleList;
+	}
+	public void setRoleList(List<SystemRole> roleList) {
+		this.roleList = roleList;
+	}
+
+	
 
 }
