@@ -1,4 +1,4 @@
-package com.pibigstar.common.aop;
+package com.pibigstar.common.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

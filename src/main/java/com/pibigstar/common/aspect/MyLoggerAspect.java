@@ -1,4 +1,4 @@
-package com.pibigstar.common.aop;
+package com.pibigstar.common.aspect;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,11 +11,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pibigstar.common.annotation.MyLogger;
 import com.pibigstar.utils.IPUtil;
 
 @Aspect //面向切面注解
 @Service
-public class MyLoggerManager {
+public class MyLoggerAspect {
 	
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	@Autowired
