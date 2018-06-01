@@ -67,11 +67,13 @@
 						<a href="javascript:;"><i class="iconfont icon-lock1"></i><cite>锁屏</cite></a>
 					</li>
 					<li class="layui-nav-item" pc>
-						<a href="javascript:;">
-							<img th:if="${user!=null }" src="images/face.jpg" class="layui-circle" width="35" height="35">
-							<cite th:if="${user!=null }" th:text="${user.username}"></cite>
-							<img th:if="${user==null }" th:src="${defaultImg}" class="layui-circle" width="35" height="35">
-							<cite th:if="${user==null }">游客</cite>
+						<a href="javascript:;" th:if="${session.user!=null}" th:object="${session.user}">
+							<img  src="images/face.jpg" class="layui-circle" width="35" height="35">
+							<cite th:text="*{username}"></cite>
+						</a>
+						<a href="javascript:;" th:if="${session.user==null}" th:object="${session.user}">
+							<img  th:src="${defaultImg}" class="layui-circle" width="35" height="35">
+							<cite>游客</cite>
 						</a>
 						<dl class="layui-nav-child">
 							<dd><a href="javascript:;" data-url="${prc }/user.do?toUserInfo"><i class="iconfont icon-zhanghu" data-icon="icon-zhanghu"></i><cite>个人资料</cite></a></dd>
@@ -85,10 +87,13 @@
 		</div>
 		<!-- 左侧导航 -->
 		<div class="layui-side layui-bg-black">
-			<div class="user-photo">
+			<div class="user-photo" th:if="${session.user!=null}" th:object="${session.user}">
 				<a class="img" title="我的头像" ><img src="images/face.jpg"></a>
-					<p th:if="${user!=null }">你好！<span class="userName" th:text="${user.username }"></span>, 欢迎登录</p>
-					<p th:if="${user==null }">你好！<span class="userName">游客</span>, 欢迎登录</p>
+					<p>你好！<span class="userName" th:text="*{username }"></span>, 欢迎登录</p>
+			</div>
+			<div class="user-photo" th:if="${session.user==null}">
+				<a class="img" title="我的头像" ><img th:src="${defaultImg}"></a>
+				<p>你好！<span class="userName">游客</span>, 欢迎登录</p>
 			</div>
 			<div class="navBar layui-side-scroll">
 				<ul class="layui-nav layui-nav-tree">

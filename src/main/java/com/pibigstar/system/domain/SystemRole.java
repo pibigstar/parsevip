@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class SystemRole {
 
@@ -27,6 +29,7 @@ public class SystemRole {
 	private List<SystemPermission> permissions;
 	
 	// 用户 - 角色关系定义;
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name="SystemUserRole",joinColumns= {@JoinColumn(name="roleId")},inverseJoinColumns= {@JoinColumn(name="userId")})
 	private List<SystemUser> userinfos; // 一个角色对应多个用户

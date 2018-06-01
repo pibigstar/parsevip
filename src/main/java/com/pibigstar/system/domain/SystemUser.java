@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class SystemUser {
 	
@@ -48,6 +50,7 @@ public class SystemUser {
 	@Column(nullable=true)
     private String lastAddress;
 	
+	@JsonIgnore
 	@ManyToMany(fetch=FetchType.EAGER)//立即从数据库中进行加载数据;
 	@JoinTable(name="SystemUserRole",joinColumns= {@JoinColumn(name="userId")},inverseJoinColumns= {@JoinColumn(name="roleId")})
   	private List<SystemRole> roleList;// 一个用户具有多个角色

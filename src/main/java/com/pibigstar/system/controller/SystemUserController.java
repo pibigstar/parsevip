@@ -23,6 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pibigstar.domain.result.ExceptionMsg;
 import com.pibigstar.domain.result.MyResponse;
+import com.pibigstar.system.domain.SystemPermission;
+import com.pibigstar.system.domain.SystemRole;
 import com.pibigstar.system.domain.SystemUser;
 import com.pibigstar.system.repository.SystemUserRepository;
 import com.pibigstar.system.service.SystemUserService;
@@ -51,7 +53,8 @@ public class SystemUserController extends SystemBaseController{
 			//登录
 			subject.login(token);
 			
-			SystemUser exitUser = systemUserService.findUserByUsername(user.getUsername());
+			SystemUser exitUser = (SystemUser) SecurityUtils.getSubject().getPrincipal();
+			getSession().setAttribute("user", exitUser);
 			return success("登录成功！", exitUser);
 			
 		} catch (AuthenticationException e) {

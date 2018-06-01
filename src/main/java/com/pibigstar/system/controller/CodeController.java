@@ -27,7 +27,8 @@ public class CodeController extends SystemBaseController{
 		//长，宽，验证码个数，干扰线数  
 		CreateImageCodeUtil imageCode = new CreateImageCodeUtil(100,30,4,10);  
 		session.setAttribute("code", imageCode.getCode().toUpperCase());  
-		imageCode.write(response.getOutputStream());  
+		imageCode.write(response.getOutputStream());
+		
 	}  
 
 	@RequestMapping("code/check")

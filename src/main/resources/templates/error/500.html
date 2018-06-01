@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="refresh" content="5;URL=/index">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title th:text="${exception.resCode}"></title>
+
+	<!-- Global stylesheets -->
+	<link href="/admin/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="/admin/css/components.css" rel="stylesheet" type="text/css">
+	<!-- /global stylesheets -->
+</head>
+<body class="navbar-bottom">
+	<!-- Page container -->
+	<div class="page-container">
+		<!-- Page content -->
+		<div class="page-content">
+			<!-- Main content -->
+			<div class="content-wrapper">
+				<!-- Error title -->
+				<div class="text-center content-group">
+					<h1 th:if="${exception!=null}" class="error-title" th:text="${exception.resCode}"></h1>
+					<h3 th:if="${exception!=null}" th:text="${exception.resMsg}"></h3>
+					<h2>5秒钟后跳转到上一页。。。。。</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

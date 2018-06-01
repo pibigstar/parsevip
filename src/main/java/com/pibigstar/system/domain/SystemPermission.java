@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class SystemPermission {
 
@@ -34,6 +36,7 @@ public class SystemPermission {
 	private String parentIds;//父编号列表
 	private Boolean available = Boolean.FALSE;//是否可用
 	
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name="SystemRolePermission",joinColumns= {@JoinColumn(name="permissionId")},inverseJoinColumns= {@JoinColumn(name="roleId")})
 	private List<SystemRole> roles;
