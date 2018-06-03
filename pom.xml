@@ -60,6 +60,19 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
+		<!-- Swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.8.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.8.0</version>
+		</dependency>
+
+
 		<!-- 关闭thymeleaf的html校验 -->
 		<dependency>
 			<groupId>net.sourceforge.nekohtml</groupId>
@@ -86,6 +99,8 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.2.47</version>
 		</dependency>
+
+
 
 		<!-- vip解析 -->
 		<dependency>

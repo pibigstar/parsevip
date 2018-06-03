@@ -14,13 +14,22 @@ import org.springframework.web.servlet.ModelAndView;
 import com.pibigstar.parsevip.bean.Video;
 import com.pibigstar.parsevip.video.TengXun;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
 @Controller
-public class APIController extends BaseController{
+@Api(value="VIP视频播放",tags="视频播放接口")
+public class ParseVIPController extends BaseController{
 
 	@Autowired
 	private HttpServletResponse response;
 	
 	@RequestMapping(value="/vip",method=RequestMethod.GET)
+	@ApiOperation("VIP视频播放")
+	@ApiImplicitParams(value = { @ApiImplicitParam(name="url",value="视频地址")})
 	public ModelAndView play(String url) throws IOException {
 		List<Video> videos = null;
 		ModelAndView mv = new ModelAndView();

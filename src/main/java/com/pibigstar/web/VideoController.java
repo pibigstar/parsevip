@@ -15,6 +15,10 @@ import com.pibigstar.parsevip.bean.Video;
 import com.pibigstar.parsevip.video.Renren;
 import com.pibigstar.parsevip.video.TengXun;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
 /**
  * 视频
  * @author pibigstar
@@ -22,21 +26,24 @@ import com.pibigstar.parsevip.video.TengXun;
  */
 @RestController
 @RequestMapping("video")
+@Api(value="视频解析接口类",tags="视频解析")
 public class VideoController extends BaseController{
 	
 	@MyLogger(description = "视频解析")
 	@RequestMapping(value = "parse",method=RequestMethod.POST)
-	public MyResponse parseUrl(String type,String url) {
+	@ApiOperation("视频解析")
+	public MyResponse parseUrl(@ApiParam(name = "type",value = "类型1：腾讯，2：人人",required = true)String type,
+			@ApiParam(name = "url",value = "视频地址",required = true)String url) {
 		log.info("url:"+ url);
 		int key = Integer.parseInt(type);
 		switch (key) {
-		case 0:
+		case 1:
 			if (url!=null) {
 				List<Video> videos = TengXun.parse(url);
 				return success(videos);
 			}
 			break;
-		case 1:
+		case 2:
 			if (url!=null) {
 				String realUrl = Renren.parse(url);
 				return success(realUrl);
