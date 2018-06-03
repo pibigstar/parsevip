@@ -34,6 +34,8 @@ public class ShiroConfig {
 		filterChainDefinitionMap.put("/**/*.css", "anon");
 		filterChainDefinitionMap.put("/**/*.mp4", "anon");
 		filterChainDefinitionMap.put("/**/create", "anon");
+		filterChainDefinitionMap.put("/**/*.ttf", "anon");
+		filterChainDefinitionMap.put("/**/*.woff", "anon");
 		filterChainDefinitionMap.put("/**/user/login", "anon");
 		
 		// 配置退出过滤器，具体代码shiro已经替我们实现

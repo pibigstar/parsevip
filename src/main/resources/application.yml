@@ -16,7 +16,7 @@ spring:
 
   thymeleaf:
     cache: false #开启模板热部署
-    mode: LEGACYHTML5 #不校验html标签,需要加入jar包 net.sourceforge.nekohtml
+    mode: HTML #不校验html标签,需要加入jar包 net.sourceforge.nekohtml
 ########邮箱配置###########
   mail:
     host: smtp.163.com
