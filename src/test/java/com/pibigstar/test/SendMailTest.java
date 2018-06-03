@@ -19,22 +19,21 @@ public class SendMailTest {
 	 */
 	@Test
 	public void testSendSimpleMail() {
-		mailService.sendSimpleMail("leikewei123@163.com", "测试简单邮件", "这是一个测试邮件");
+		//mailService.sendSimpleMail("leikewei123@163.com", "测试简单邮件", "这是一个测试邮件");
 	}
 	/**
 	 * 发送html邮件
 	 */
 	@Test
 	public void testSendHtmlMail() {
-		String content = "<html><body><h1>这是一个测试邮件</h1></body></html>";
-		mailService.sendHtmlMail("leikewei123@163.com", "测试HTML邮件", content);
+		//mailService.sendHtmlMail("741047261@qq.com", "我，秦始皇，打钱！", "<h1><a href='http://mxspvip.cn'>麻溜打钱！</a></h1>");
 	}
 	/**
 	 * 发送带附件的邮件
 	 */
 	@Test
 	public void testSendAttachMail() {
-		mailService.sendAttachmentsMail("leikewei123@163.com", "测试", "这是一个带附件的邮件","F:\\学习计划.txt");
+		//mailService.sendAttachmentsMail("leikewei123@163.com", "测试", "这是一个带附件的邮件","F:\\学习计划.txt");
 	}
 
 }

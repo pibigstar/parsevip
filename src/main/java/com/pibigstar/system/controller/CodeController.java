@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.pibigstar.utils.CreateImageCodeUtil;
+import com.pibigstar.common.utils.CreateImageCodeUtil;
 
 @Controller
 public class CodeController extends SystemBaseController{

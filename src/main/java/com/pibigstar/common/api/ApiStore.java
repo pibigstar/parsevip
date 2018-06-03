@@ -1,16 +1,12 @@
 package com.pibigstar.common.api;
 
-import static org.assertj.core.api.Assertions.contentOf;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import org.junit.Assert;
 import org.springframework.context.ApplicationContext;
-
 import com.pibigstar.common.annotation.APIMapping;
 
 /**
@@ -27,8 +23,9 @@ public class ApiStore {
 	private HashMap<String, ApiRunable> apiMap = new HashMap<>();
 	
 	public ApiStore(ApplicationContext context) {
-		Assert.assertNotNull(context);
-		this.context = context;
+		if (context!=null) {
+			this.context = context;
+		}
 	}
 	
 	public void loadApiFromSpringBeans() {

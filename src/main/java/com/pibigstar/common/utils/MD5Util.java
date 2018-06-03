@@ -1,4 +1,4 @@
-package com.pibigstar.utils;
+package com.pibigstar.common.utils;
 
 import java.security.MessageDigest;
 

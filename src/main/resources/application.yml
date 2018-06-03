@@ -21,7 +21,7 @@ spring:
   mail:
     host: smtp.163.com
     username: pibigstar@163.com
-    password:  #邮箱授权码
+    password:  leikewei521  #邮箱授权码
     default-encoding: UTF-8
 mail:
   sender: pibigstar@163.com #以谁来发送邮件

@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pibigstar.common.annotation.MyLogger;
-import com.pibigstar.utils.IPUtil;
+import com.pibigstar.common.utils.IPUtil;
 
 @Aspect //面向切面注解
 @Service

@@ -5,7 +5,7 @@
 
 	<groupId>com.pibigstar</groupId>
 	<artifactId>parsevip</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.5.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>parsevip</name>
@@ -55,10 +55,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
+
 
 		<!-- Swagger -->
 		<dependency>
