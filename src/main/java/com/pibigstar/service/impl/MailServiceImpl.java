@@ -38,7 +38,7 @@ public class MailServiceImpl implements MailService {
 		message.setText(content);
 		try {
 			mailSender.send(message);
-			logger.info("简单邮件已发送！");
+			logger.info("简单邮件发送到："+to+" 成功！");
 		} catch (MailException e) {
 			e.printStackTrace();
 		}
@@ -58,7 +58,7 @@ public class MailServiceImpl implements MailService {
 			helper.setText(content,true);
 
 			mailSender.send(message);
-			logger.info("html邮件已发送！");
+			logger.info("html邮件发送到："+to+" 成功！");
 
 		} catch (MessagingException e) {
 			e.printStackTrace();
@@ -84,7 +84,7 @@ public class MailServiceImpl implements MailService {
 			helper.addAttachment(fileName, file);
 
 			mailSender.send(message);
-			logger.info("带附件的邮件已发送！");
+			logger.info("带附件的邮件发送到："+to+" 成功！");
 
 		} catch (MessagingException e) {
 			e.printStackTrace();

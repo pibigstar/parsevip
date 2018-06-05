@@ -1,7 +1,7 @@
 #####使用哪个环境 prod生成环境  dev开发环境########
 spring:
   profiles:
-    active: dev
+    active: prod
 ##########公共配置##########   
   jpa:
     show-sql: false
@@ -42,9 +42,10 @@ parsevip:
     src: http://p8b1ddiwd.bkt.clouddn.com/resources/插件安装包.zip
   # QQ登录配置
   QQLogin: 
-    appId: 应用的appId
-    redirecturi: 回调地址
-
+    appId: 101472011
+    redirecturi: http://mxspvip.cn/index
+  # 是否开启验证码验证
+  openCode: false
 admin:
   name: VIP资源解析 # 后台名字
   address: admin #后台前缀

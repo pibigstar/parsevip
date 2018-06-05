@@ -15,7 +15,7 @@ public class SendEmailTask {
 	private MailService mailService;
 	
 	 /**
-	  * 每隔一秒钟执行一次 
+	  * 每隔一分钟执行一次 
 	  */
     //@Scheduled(cron="1 * * * * ?")    
 	//private void process() {}

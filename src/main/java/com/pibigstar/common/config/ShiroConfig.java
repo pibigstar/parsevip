@@ -37,6 +37,7 @@ public class ShiroConfig {
 		filterChainDefinitionMap.put("/**/*.ttf", "anon");
 		filterChainDefinitionMap.put("/**/*.woff", "anon");
 		filterChainDefinitionMap.put("/**/user/login", "anon");
+		filterChainDefinitionMap.put("/**/admin/interface/list", "anon");
 		
 		// 配置退出过滤器，具体代码shiro已经替我们实现
 		filterChainDefinitionMap.put("/logout", "logout");

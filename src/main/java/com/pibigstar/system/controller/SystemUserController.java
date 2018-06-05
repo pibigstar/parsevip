@@ -14,6 +14,7 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,13 +37,16 @@ public class SystemUserController extends SystemBaseController{
 	private SystemUserService systemUserService;
 	@Autowired
 	private SystemUserRepository systemUserRepository;
-
+	@Value("${parsevip.openCode}")
+	private boolean openCode;
 
 	@RequestMapping("user/login")
 	public MyResponse login(SystemUser user,String code,HttpSession httpsession) {
 		String imgCode = (String) httpsession.getAttribute("code");
-		if (!imgCode.equals(code.toUpperCase())) {
-			return error(ExceptionMsg.CodeError);
+		if (openCode) {
+			if (!imgCode.equals(code.toUpperCase())) {
+				return error(ExceptionMsg.CodeError);
+			}
 		}
 		//得到当前用户
 		Subject subject = SecurityUtils.getSubject();
