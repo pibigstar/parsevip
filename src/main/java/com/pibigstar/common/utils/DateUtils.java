@@ -18,6 +18,31 @@ public class DateUtils {
 	
 	public final static String YYYYMMDDHHMMSS = "yyyyMMddHHmmssSSS";
 	
+	/**
+	 * 得到当前时间
+	 * @return 2018-06-08 21:52:30
+	 */
+	public String now() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return format.format(new Date());
+	}
+	
+	/**
+	 * 格式化当前时间
+	 * @param date
+	 * @param str
+	 * @return
+	 */
+	public String getFormatDate(Date date,String strFormat) {
+		SimpleDateFormat format = new SimpleDateFormat(strFormat);
+		return format.format(date);
+	}
+	public String getFormatDate(Date date) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return format.format(date);
+	}
+	
+	
     /**
      * @return
      * @author neo

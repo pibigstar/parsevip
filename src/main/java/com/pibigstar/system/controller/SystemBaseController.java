@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.pibigstar.common.Constant;
+import com.pibigstar.common.utils.MD5Util;
 import com.pibigstar.domain.User;
 import com.pibigstar.domain.result.ExceptionMsg;
 import com.pibigstar.domain.result.MyResponse;
@@ -83,6 +84,14 @@ public class SystemBaseController {
 		request.setAttribute("adminName", adminName);
 		request.setAttribute("adminAuthor", adminAuthor);
 		request.setAttribute("defaultImg", defaultImg);
+	}
+	
+	protected String getPwd(String pwd) {
+		if (pwd!=null&&!"".equals(pwd)) {
+			return MD5Util.encrypt(pwd);
+		}else {
+			return null;
+		}
 	}
 
 }

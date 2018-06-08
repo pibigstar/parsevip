@@ -1,16 +1,13 @@
 package com.pibigstar.system.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pibigstar.domain.result.ExceptionMsg;
 import com.pibigstar.domain.result.MyResponse;
-import com.pibigstar.system.domain.SystemPermission;
-import com.pibigstar.system.domain.SystemRole;
 import com.pibigstar.system.domain.SystemUser;
 import com.pibigstar.system.repository.SystemUserRepository;
 import com.pibigstar.system.service.SystemUserService;
@@ -51,7 +46,7 @@ public class SystemUserController extends SystemBaseController{
 		//得到当前用户
 		Subject subject = SecurityUtils.getSubject();
 		//通过前台传递过来的用户名和密码生成token
-		UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(),user.getPassword());
+		UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(),getPwd(user.getPassword()));
 		
 		try {
 			//登录
@@ -77,6 +72,9 @@ public class SystemUserController extends SystemBaseController{
 	@RequestMapping(value = "user/add",method=RequestMethod.POST)
 	public MyResponse add(SystemUser user) {
 		try {
+			user.setPassword(getPwd(user.getPassword()));
+			user.setCreateTime(new Date());
+			user.setState("1");
 			systemUserRepository.save(user);
 			return success("添加成功！");
 		} catch (Exception e) {
@@ -99,7 +97,9 @@ public class SystemUserController extends SystemBaseController{
 	@RequestMapping(value = "user/{id}",method=RequestMethod.PUT)
 	public MyResponse update(@PathVariable Long id,@ModelAttribute SystemUser user) {
 		try {
+			user.setUpdateTime(new Date());
 			systemUserRepository.saveAndFlush(user);
+			
 			return success("更新成功！");
 		} catch (Exception e) {
 			e.printStackTrace();
