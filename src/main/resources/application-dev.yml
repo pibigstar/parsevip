@@ -9,5 +9,9 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/parsevip?useUnicode=true&characterEncoding=utf-8&useSSL=false
     data-username: root
     data-password: 123456
-
+######### 热部署配置 #############
+  devtools:
+    restart:
+      enabled: true # 开启热部署
+      additional-paths: src/main/java #修改那个目录下的文件需要restart
 

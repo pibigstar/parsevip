@@ -1,31 +1,26 @@
 package com.pibigstar.common.utils;
 
-import java.security.MessageDigest;
+import org.springframework.util.DigestUtils;
+
+import com.pibigstar.common.Constant;
 
 /**
- * MD5加密工具类
+ * MD5工具类
  * @author pibigstar
  *
  */
-
 public class MD5Util {
-
-	public static String encrypt(String dataStr) {
-		try {
-			MessageDigest m = MessageDigest.getInstance("MD5");
-			m.update(dataStr.getBytes("UTF8"));
-			byte s[] = m.digest();
-			String result = "";
-			for (int i = 0; i < s.length; i++) {
-				result += Integer.toHexString((0x000000FF & s[i]) | 0xFFFFFF00)
-						.substring(6);
-			}
-			return result;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return "";
+	//盐，用于混交md5
+	private static final String slat = Constant.PASSWORD_KEY;
+	/**
+	 * 生成md5
+	 * @param seckillId
+	 * @return
+	 */
+	public static String getMD5(String str) {
+		String base = str +"/"+slat;
+		String md5 = DigestUtils.md5DigestAsHex(base.getBytes());
+		return md5;
 	}
 
 }

@@ -88,7 +88,7 @@ public class SystemBaseController {
 	
 	protected String getPwd(String pwd) {
 		if (pwd!=null&&!"".equals(pwd)) {
-			return MD5Util.encrypt(pwd);
+			return MD5Util.getMD5(pwd);
 		}else {
 			return null;
 		}

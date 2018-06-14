@@ -1,14 +1,14 @@
 #####使用哪个环境 prod生成环境  dev开发环境########
 spring:
   profiles:
-    active: prod
+    active: dev
 ##########公共配置##########   
   jpa:
     show-sql: false
     hibernate:
       ddl-auto: update
     database: mysql
-#######静态资源访问配置#######
+########## 静态资源访问配置 ###########
   mvc:
     static-path-pattern: /**
   resources:
@@ -17,7 +17,8 @@ spring:
   thymeleaf:
     cache: false #开启模板热部署
     mode: HTML #不校验html标签,需要加入jar包 net.sourceforge.nekohtml
-########邮箱配置###########
+
+########### 邮箱配置 ##############
   mail:
     host: smtp.163.com
     username: pibigstar@163.com
@@ -25,6 +26,12 @@ spring:
     default-encoding: UTF-8
 mail:
   sender: pibigstar@163.com #以谁来发送邮件
+
+########### Mybatis 配置  ################
+mybatis:
+  type-aliases-package: com.pibigstar.domain # 实体扫描路径
+  configuration:
+    map-underscore-to-camel-case: true #开启驼峰命名
 
 #########################自定义配置#################################
 #############使用：${parsevip.QQ.qqgroup}##############################

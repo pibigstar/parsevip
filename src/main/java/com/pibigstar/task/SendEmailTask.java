@@ -22,7 +22,7 @@ public class SendEmailTask {
     /**
      * 每隔一天执行一次 
      */
-    @Scheduled(cron="1 * * * * ?")    
+    @Scheduled(cron="* * 1 * * ?")    
     private void sendEmail() {
     	mailService.sendHtmlMail("pibigstar@163.com", "我，秦始皇", "<h1><a href='http://mxspvip.cn'>我，秦始皇，麻溜打钱！</a></h1>");
     }
