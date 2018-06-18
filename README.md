@@ -1,6 +1,6 @@
 # VIP资源解析
 
-## 1. 使用的技术
+## 1 使用的技术
 
 ### 1.1 SpringBoot方面
 
@@ -14,13 +14,12 @@
 - [ ] **短信发送功能**
 - [x] **SpringBoot热部署配置**
 
-### 1.2 设计模式方面
+### 1.2 其他方面
 
+- [x] **QQ登录**
 - [x] **统一异常处理**
 - [x] **自定义拦截器**
 - [x] **面向切面的日志打印**
-
-
 
 ## 2 VIP资源解析部分
 
@@ -48,3 +47,20 @@
 2. 设置请求头header{clientVersion，clientType}
 2. 根据视频的id和请求头请求接口拿到视频播放的真实地址
 
+## 3 交流&&提问
+
+- 留言：[https://github.com/pibigstar/parsevip/issues](https://github.com/pibigstar/parsevip/issues)
+
+- QQ群：[752146272](https://shang.qq.com/wpa/qunwpa?idkey=875408aae56499d92ddcdda3966fa7c01e1d3b587b038d335917df7d41893170)
+
+- 官方网站：[http://mxspvip.cn](http://mxspvip.cn)
+
+## 4 支持&&捐助
+
+### 4.1 支付宝捐助
+
+![](http://mxspvip.cn/images/alipay.jpg)
+
+### 4.2 微信捐助
+
+![](http://mxspvip.cn/images/tenpay.jpg)
