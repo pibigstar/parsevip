@@ -31,6 +31,7 @@ public enum ExceptionMsg {
     NOPARSETYPE("0021","该网站暂时不支持解析"),
     URLNOTNULL("0022","URL不能为空"),
     
+    FILLE_IS_NULL("000400","上传文件为空"),
     LimitPictureSize("000401","图片大小必须小于2M"),
     LimitPictureType("000402","图片格式必须为'jpg'、'png'、'jpge'、'gif'、'bmp'");
 	

@@ -23,31 +23,22 @@ public class SystemUser {
 	@Column(nullable=false,unique=true)
     private String username;
 
-	@Column(nullable=false)
     private String email;
-	@Column(nullable=true)
     private String phone;
-	@Column(nullable=false)
+	
     private String password;
-	@Column(nullable=true)
     private Integer age;
-	@Column(nullable=true)
+	
+	private String headImg;
+	
     private String signature;
-	@Column(nullable=true)
     private String sex;
-	@Column(nullable=true)
     private Date createTime;
-	@Column(nullable=true)
     private Date updateTime;
-	@Column(nullable=true)
     private String state;
-	@Column(nullable=true)
     private String emailCode;
-	@Column(nullable=true)
     private String lastIp;
-	@Column(nullable=true)
     private Date lastTime;
-	@Column(nullable=true)
     private String lastAddress;
 	
 	@JsonIgnore
@@ -85,6 +76,13 @@ public class SystemUser {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getHeadImg() {
+		return headImg;
+	}
+	public void setHeadImg(String headImg) {
+		this.headImg = headImg;
 	}
 	public Integer getAge() {
 		return age;

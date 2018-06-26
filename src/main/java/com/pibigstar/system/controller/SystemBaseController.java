@@ -15,6 +15,7 @@ import com.pibigstar.common.utils.MD5Util;
 import com.pibigstar.domain.User;
 import com.pibigstar.domain.result.ExceptionMsg;
 import com.pibigstar.domain.result.MyResponse;
+import com.pibigstar.system.domain.SystemUser;
 
 @Controller
 @RequestMapping(value="/admin")
@@ -24,13 +25,13 @@ public class SystemBaseController {
 	@Autowired
 	protected HttpServletRequest request;
 	
-	@Value("${admin.address}")
+	@Value("${parsevip.admin.address}")
 	protected String adminAdress;
-	@Value("${admin.name}")
+	@Value("${parsevip.admin.name}")
 	protected String adminName;
-	@Value("${admin.author}")
+	@Value("${parsevip.admin.author}")
 	protected String adminAuthor;
-	@Value("${admin.defaultImg}")
+	@Value("${parsevip.admin.defaultImg}")
 	protected String defaultImg;
 	
 	
@@ -75,8 +76,8 @@ public class SystemBaseController {
 	/**
 	 * 得到session中的用户对象
 	 */
-	protected User getUser() {
-		return (User) getSession().getAttribute(Constant.LOGIN_USER_SESSION_KEY);
+	protected SystemUser getUser() {
+		return (SystemUser) getSession().getAttribute(Constant.LOGIN_USER_SESSION_KEY);
 	}
 	
 	protected void setAttribute() {

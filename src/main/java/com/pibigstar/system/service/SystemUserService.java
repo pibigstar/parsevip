@@ -12,4 +12,8 @@ public interface SystemUserService {
 	
 	public SystemUser findUserByUsername(String username);
 	
+	
+	public SystemUser update(SystemUser user);
+	
+	
 }

@@ -14,11 +14,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pibigstar.common.Constant;
+import com.pibigstar.common.utils.IPUtil;
 import com.pibigstar.domain.result.ExceptionMsg;
 import com.pibigstar.domain.result.MyResponse;
 import com.pibigstar.system.domain.SystemUser;
@@ -53,7 +57,7 @@ public class SystemUserController extends SystemBaseController{
 			subject.login(token);
 			
 			SystemUser exitUser = (SystemUser) SecurityUtils.getSubject().getPrincipal();
-			getSession().setAttribute("user", exitUser);
+			getSession().setAttribute(Constant.LOGIN_USER_SESSION_KEY, exitUser);
 			return success("登录成功！", exitUser);
 			
 		} catch (AuthenticationException e) {
@@ -69,7 +73,7 @@ public class SystemUserController extends SystemBaseController{
 		return success(users);
 	}
 
-	@RequestMapping(value = "user/add",method=RequestMethod.POST)
+	@RequestMapping(value = "add",method=RequestMethod.POST)
 	public MyResponse add(SystemUser user) {
 		try {
 			user.setPassword(getPwd(user.getPassword()));
@@ -120,6 +124,17 @@ public class SystemUserController extends SystemBaseController{
 			mv.setViewName("exception");
 			return mv;
 		}
+	}
+	
+	@PostMapping("user/update")
+	public MyResponse update(SystemUser user) {
+		SystemUser user2 = getUser();
+		user.setPassword(user2.getPassword());
+		user.setUpdateTime(new Date());
+		user.setLastIp(IPUtil.getIPAddr(request));
+		user.setHeadImg(user2.getHeadImg());
+		getSession().setAttribute(Constant.LOGIN_USER_SESSION_KEY, user);
+		return success("更新成功！", systemUserService.update(user));
 	}
 
 }

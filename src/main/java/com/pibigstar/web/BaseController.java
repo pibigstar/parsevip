@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 
 import com.pibigstar.common.Constant;
+import com.pibigstar.common.config.MyConfiguration;
 import com.pibigstar.domain.User;
 import com.pibigstar.domain.result.ExceptionMsg;
 import com.pibigstar.domain.result.MyResponse;
@@ -27,12 +28,14 @@ public class BaseController {
 
 	@Autowired
 	protected HttpServletRequest request;
+	@Autowired
+	protected MyConfiguration myConfig;
 	
-	@Value("${parsevip.QQ.qqgroup}")
+	@Value("${parsevip.qqgroup}")
 	protected String qqgroup;
-	@Value("${parsevip.QQ.addgroupUrl}")
+	@Value("${parsevip.addgroupUrl}")
 	protected String addgroupUrl;
-	@Value("${parsevip.QQ.welcome}")
+	@Value("${parsevip.welcome}")
 	protected String welcome;
 	@Value("${parsevip.video.src}")
 	protected String videoSrc;

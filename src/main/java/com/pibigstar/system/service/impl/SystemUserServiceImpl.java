@@ -35,4 +35,10 @@ public class SystemUserServiceImpl implements SystemUserService{
 		return systemUserRepository.findByUsername(username);
 	}
 
+
+	@Override
+	public SystemUser update(SystemUser user) {
+		return systemUserRepository.save(user);
+	}
+
 }

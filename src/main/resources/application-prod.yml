@@ -13,3 +13,8 @@ spring:
     restart:
       enabled: false # 关闭热部署
       additional-paths: src/main/java #修改那个目录下的文件需要restart
+
+#######  文件上传配置 ########
+parsevip:
+  file:
+    path: /home/upload/

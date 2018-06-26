@@ -3,7 +3,7 @@ var $form;
 var form;
 var $;
 layui.config({
-	base : "../../js/"
+	base : "/admin/js/"
 }).use(['form','layer','upload','laydate'],function(){
 	form = layui.form();
 	var layer = parent.layer === undefined ? layui.layer : parent.layer;
@@ -13,13 +13,15 @@ layui.config({
         loadProvince(); //加载省信息
 
     layui.upload({
-    	url : "../../json/userface.json",
-    	success: function(res){
-    		var num = parseInt(4*Math.random());  //生成0-4的随机数
-    		//随机显示一个头像信息
-	    	userFace.src = res.data[num].src;
-	    	window.sessionStorage.setItem('userFace',res.data[num].src);
-	    }
+    	elem: '#fileUpload',
+    	url : "/admin/file/upload",
+    	success: function(res){ //上传后的回调
+    		layer.msg(res.resMsg);
+    		//更换最新图片
+	    	userFace.src = res.data;
+	    	window.sessionStorage.setItem('userFace',res.data);
+    	} 
+    	
     });
 
     //判断是否修改过头像，如果修改过则显示修改后的头像，否则显示默认头像
@@ -34,16 +36,17 @@ layui.config({
     	var index = layer.msg('提交中，请稍候',{icon: 16,time:false,shade:0.8});
         setTimeout(function(){
             layer.close(index);
+            console.info("提交信息。。。。")
             $.ajax({
-            	url:'user.do?update',
-            	type:'POST',
+            	url:'/admin/user/update',
+            	type:'post',
             	data:data.field,
             	dataType:'json',
             	success:function(d){
             		if(d.success){
-            			layer.msg("个人信息修改成功！");
+            			layer.msg(d.resMsg);
             		}else{
-            			layer.msg("个人信息修改成功！");
+            			layer.msg(d.resMsg);
             		}
             	},
             	error:function(){
@@ -60,7 +63,7 @@ layui.config({
         setTimeout(function(){
             layer.close(index);
             $.ajax({
-            	url:'user.do?changePwd',
+            	url:'admin/user/changePwd',
             	type:'POST',
             	data:data.field,
             	dataType:'json',

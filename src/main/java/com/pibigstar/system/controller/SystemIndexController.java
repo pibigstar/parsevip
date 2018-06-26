@@ -40,6 +40,10 @@ public class SystemIndexController extends SystemBaseController{
 	public String toUserAdd() {
 		return adminAdress+"/user/addUser";
 	}
+	@RequestMapping(value="user/info",method=RequestMethod.GET)
+	public String toUserInfo() {
+		return adminAdress+"/user/userInfo";
+	}
 	
 	/**
 	 * 接口界面
