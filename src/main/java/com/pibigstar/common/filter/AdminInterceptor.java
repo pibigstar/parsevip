@@ -1,4 +1,4 @@
-package com.pibigstar.common.config;
+package com.pibigstar.common.filter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

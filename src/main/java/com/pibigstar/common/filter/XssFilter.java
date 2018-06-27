@@ -1,4 +1,4 @@
-package com.pibigstar.common.config;
+package com.pibigstar.common.filter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
 /** 
  * 拦截防止xss注入
  * 通过Jsoup过滤请求参数内的特定字符
- * @author yangwk 
+ * @author pibigstar 
  */  
 public class XssFilter implements Filter {  
     private static Logger logger = LoggerFactory.getLogger(XssFilter.class);

@@ -1,4 +1,4 @@
-package com.pibigstar.common.config;
+package com.pibigstar.common.filter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
@@ -7,7 +7,13 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.pibigstar.common.utils.JsoupUtil;
 
-
+/**
+ * 实现XSS过滤的关键，在其内重写了
+ * getParameter，getParameterValues，getHeader等方法，
+ * 对http请求内的参数进行了过滤。
+ * @author pibigstar
+ *
+ */
 public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {  
     HttpServletRequest orgRequest = null;  
     private boolean isIncludeRichText = false;

@@ -11,6 +11,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.google.common.collect.Maps;
 import com.pibigstar.common.Constant;
+import com.pibigstar.common.filter.AdminInterceptor;
+import com.pibigstar.common.filter.XssFilter;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer{
