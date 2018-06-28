@@ -8,7 +8,11 @@ import java.io.IOException;
 import java.io.OutputStream;  
 import java.util.Random;  
 import javax.imageio.ImageIO;  
-  
+/**
+ * 验证码生成工具类
+ * @author pibigstar
+ *
+ */
 public class CreateImageCodeUtil {  
     // 图片的宽度。  
     private int width = 160;  

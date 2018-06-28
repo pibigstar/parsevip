@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
 
-import com.pibigstar.common.utils.JsoupUtil;
+import com.pibigstar.common.utils.XssUtil;
 
 /**
  * 实现XSS过滤的关键，在其内重写了
@@ -33,10 +33,10 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
             if(("content".equals(name) || name.endsWith("WithHtml")) && !isIncludeRichText){
                 return super.getParameter(name);
             }
-            name = JsoupUtil.clean(name);
+            name = XssUtil.clean(name);
         String value = super.getParameter(name);  
         if (value!=null&&value.trim().length()>0) {
-        	value = JsoupUtil.clean(value);  
+        	value = XssUtil.clean(value);  
 		}
         return value;  
     }  
@@ -46,7 +46,7 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
         String[] arr = super.getParameterValues(name);
         if(arr != null){
             for (int i=0;i<arr.length;i++) {
-                arr[i] = JsoupUtil.clean(arr[i]);
+                arr[i] = XssUtil.clean(arr[i]);
             }
         }
         return arr;
@@ -60,10 +60,10 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     */  
     @Override  
     public String getHeader(String name) {  
-            name = JsoupUtil.clean(name);
+            name = XssUtil.clean(name);
         String value = super.getHeader(name);  
         if (value!=null&&value.trim().length()>0) {
-        	 value = JsoupUtil.clean(value); 
+        	 value = XssUtil.clean(value); 
 		}
         return value;  
     }  

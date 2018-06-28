@@ -11,7 +11,7 @@ import org.jsoup.safety.Whitelist;
  * xss非法标签过滤
  * {@link http://www.jianshu.com/p/32abc12a175a?nomobile=yes}
  */
-public class JsoupUtil {
+public class XssUtil {
 
     /**
      * 使用自带的basicWithImages 白名单

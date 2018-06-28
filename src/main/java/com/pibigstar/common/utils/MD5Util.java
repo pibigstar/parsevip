@@ -1,5 +1,7 @@
 package com.pibigstar.common.utils;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+
 import org.springframework.util.DigestUtils;
 
 import com.pibigstar.common.Constant;
@@ -22,5 +24,4 @@ public class MD5Util {
 		String md5 = DigestUtils.md5DigestAsHex(base.getBytes());
 		return md5;
 	}
-
 }
