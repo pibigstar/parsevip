@@ -15,8 +15,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang3.BooleanUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -73,10 +71,9 @@ public class XssFilter implements Filter {
             logger.debug("xss filter init~~~~~~~~~~~~");
         }
         String isIncludeRichText = filterConfig.getInitParameter("isIncludeRichText");
-        if(StringUtils.isNotBlank(isIncludeRichText)){
-            IS_INCLUDE_RICH_TEXT = BooleanUtils.toBoolean(isIncludeRichText);
+        if(isIncludeRichText!=null&&isIncludeRichText.trim().length()>0) {
+        	 IS_INCLUDE_RICH_TEXT = Boolean.parseBoolean(isIncludeRichText);
         }
-
         String temp = filterConfig.getInitParameter("excludes");
         if (temp != null) {
             String[] url = temp.split(",");

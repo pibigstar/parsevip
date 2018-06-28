@@ -3,7 +3,6 @@ package com.pibigstar.common.filter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
-import org.apache.commons.lang3.StringUtils;
 
 import com.pibigstar.common.utils.JsoupUtil;
 
@@ -36,9 +35,9 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
             }
             name = JsoupUtil.clean(name);
         String value = super.getParameter(name);  
-        if (StringUtils.isNotBlank(value)) {
-            value = JsoupUtil.clean(value);  
-        }
+        if (value!=null&&value.trim().length()>0) {
+        	value = JsoupUtil.clean(value);  
+		}
         return value;  
     }  
 
@@ -63,9 +62,9 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     public String getHeader(String name) {  
             name = JsoupUtil.clean(name);
         String value = super.getHeader(name);  
-        if (StringUtils.isNotBlank(value)) {  
-            value = JsoupUtil.clean(value); 
-        }  
+        if (value!=null&&value.trim().length()>0) {
+        	 value = JsoupUtil.clean(value); 
+		}
         return value;  
     }  
 
