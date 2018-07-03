@@ -3,6 +3,7 @@ package com.pibigstar.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.pibigstar.domain.Announcement;
@@ -16,6 +17,7 @@ public class AnnouncementServiceImpl implements AnnouncementService{
 	private AnnouncementRepository announcementRepository;
 	
 	@Override
+	@Cacheable("announcements")
 	public List<Announcement> list() {
 		return announcementRepository.findAll();
 	}
