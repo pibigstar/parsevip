@@ -27,7 +27,7 @@ spring:
     
 ########### Mybatis 配置  ################
 mybatis:
-  type-aliases-package: com.pibigstar.domain # 实体扫描路径
+  type-aliases-package: com.pibigstar.parsevip.domain # 实体扫描路径
   configuration:
     map-underscore-to-camel-case: true #开启驼峰命名
 
