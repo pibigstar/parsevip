@@ -120,6 +120,12 @@
             <artifactId>core</artifactId>
             <version>3.1.0</version>
         </dependency>
+		<!-- pdf操作 -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>5.5.13</version>
+        </dependency>
 
 		<!-- vip解析 -->
 		<dependency>
