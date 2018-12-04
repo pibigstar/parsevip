@@ -126,6 +126,12 @@
             <artifactId>itextpdf</artifactId>
             <version>5.5.13</version>
         </dependency>
+		<!-- excel操作 -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>4.0.1</version>
+        </dependency>
 
 		<!-- vip解析 -->
 		<dependency>
