@@ -1,9 +1,6 @@
 package com.pibigstar.parsevip.common.utils;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-
 import org.springframework.util.DigestUtils;
-
 import com.pibigstar.parsevip.common.Constant;
 
 /**
@@ -16,7 +13,7 @@ public class MD5Util {
 	private static final String slat = Constant.PASSWORD_KEY;
 	/**
 	 * 生成md5
-	 * @param seckillId
+	 * @param str
 	 * @return
 	 */
 	public static String getMD5(String str) {

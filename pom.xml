@@ -126,11 +126,23 @@
             <artifactId>itextpdf</artifactId>
             <version>5.5.13</version>
         </dependency>
-		<!-- excel操作 -->
+        <!-- excel操作 -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>4.0.1</version>
+        </dependency>
+        <!-- jwt加密工具类 -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <!-- csv解析 -->
+        <dependency>
+            <groupId>com.univocity</groupId>
+            <artifactId>univocity-parsers</artifactId>
+            <version>2.7.6</version>
         </dependency>
 
 		<!-- vip解析 -->
@@ -159,7 +171,12 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.10-FINAL</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
