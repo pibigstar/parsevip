@@ -5,7 +5,7 @@
 
 	<groupId>com.pibigstar</groupId>
 	<artifactId>parsevip</artifactId>
-	<version>1.7.0-SNAPSHOT</version>
+	<version>1.8.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>parsevip</name>
@@ -132,6 +132,11 @@
             <artifactId>poi</artifactId>
             <version>4.0.1</version>
         </dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.10-FINAL</version>
+		</dependency>
         <!-- jwt加密工具类 -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
@@ -144,7 +149,6 @@
             <artifactId>univocity-parsers</artifactId>
             <version>2.7.6</version>
         </dependency>
-
 		<!-- vip解析 -->
 		<dependency>
 			<groupId>commons-httpclient</groupId>
@@ -165,17 +169,12 @@
 			<artifactId>jsoup</artifactId>
 			<version>1.11.2</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>3.10-FINAL</version>
-        </dependency>
+
     </dependencies>
 
 	<build>
