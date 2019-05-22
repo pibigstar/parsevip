@@ -7,9 +7,9 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/parsevip?useUnicode=true&characterEncoding=utf-8&useSSL=false
-    data-username: root
-    data-password: 123456
-######### 热部署配置 #############
+    username: root
+    password: 123456
+  ######### 热部署配置 #############
   devtools:
     restart:
       enabled: true # 开启热部署
